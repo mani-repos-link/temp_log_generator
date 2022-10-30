@@ -1,4 +1,4 @@
-time(1..5). %t = lunghezza traccia
+time(1..t). %t = lunghezza traccia
 
 cur_state(I,S,0) :- initial(Name,S),template(I,Name).
 

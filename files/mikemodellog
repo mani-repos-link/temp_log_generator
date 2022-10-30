@@ -1,0 +1,2854 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- This file has been generated with the OpenXES library. It conforms -->
+<!-- to the XML serialization of the XES standard for log storage and -->
+<!-- management. -->
+<!-- XES standard version: 1.0 -->
+<!-- OpenXES library version: 1.0RC7 -->
+<!-- OpenXES is available from http://www.openxes.org/ -->
+<log xes.version="1.0" xes.features="nested-attributes" openxes.version="1.0RC7">
+	<extension name="Organizational" prefix="org" uri="http://www.xes-standard.org/org.xesext"/>
+	<extension name="Time" prefix="time" uri="http://www.xes-standard.org/time.xesext"/>
+	<extension name="Lifecycle" prefix="lifecycle" uri="http://www.xes-standard.org/lifecycle.xesext"/>
+	<extension name="Semantic" prefix="semantic" uri="http://www.xes-standard.org/semantic.xesext"/>
+	<extension name="Concept" prefix="concept" uri="http://www.xes-standard.org/concept.xesext"/>
+	<global scope="trace">
+		<string key="concept:name" value="__INVALID__"/>
+	</global>
+	<global scope="event">
+		<string key="concept:name" value="__INVALID__"/>
+	</global>
+	<string key="concept:name" value="Artificial Log"/>
+	<string key="lifecycle:model" value="standard"/>
+	<string key="source" value="DAlloy"/>
+	<trace>
+		<string key="concept:name" value="Case No. 01 [positive]"/>
+		<string key="trace:type" value="positive"/>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T20:55:02.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Fabrizio"/>
+			<int key="Grade" value="5"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T21:15:40.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="4"/>
+			<string key="concept:name" value="Resit"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T21:17:17.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Test_Failed"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T21:21:01.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T21:27:19.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T22:06:00.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T22:10:32.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T22:36:48.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T22:59:39.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T23:20:44.510+01:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="Case No. 02 [positive]"/>
+		<string key="trace:type" value="positive"/>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T15:48:44.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="3"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T15:54:24.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Resit"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T16:06:46.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Test_Failed"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T16:52:25.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T17:05:11.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T17:07:43.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T18:42:48.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T19:06:23.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T19:23:02.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T19:27:34.510+01:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="Case No. 03 [positive]"/>
+		<string key="trace:type" value="positive"/>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T11:56:51.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="4"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T12:10:49.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Resit"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T13:01:56.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Test_Failed"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T13:59:38.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T14:09:38.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T14:10:06.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T14:20:14.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T14:37:39.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T15:16:45.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T15:25:26.510+01:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="Case No. 04 [positive]"/>
+		<string key="trace:type" value="positive"/>
+		<event>
+			<string key="Driver" value="Raimundas"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T09:05:21.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="3"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T09:06:28.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="3"/>
+			<string key="concept:name" value="Resit"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T09:15:20.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Test_Failed"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T09:28:43.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T09:47:49.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T10:14:55.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T10:47:03.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T11:04:30.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T11:31:43.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T11:34:59.510+01:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="Case No. 05 [positive]"/>
+		<string key="trace:type" value="positive"/>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T03:49:20.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="3"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T04:05:14.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="5"/>
+			<string key="concept:name" value="Resit"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T04:22:11.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Test_Failed"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T04:43:03.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T04:50:10.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T05:28:20.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T06:24:28.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T06:34:00.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T06:52:30.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T06:59:07.510+01:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="Case No. 06 [positive]"/>
+		<string key="trace:type" value="positive"/>
+		<event>
+			<string key="Driver" value="Raimundas"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T00:03:34.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="4"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T00:18:33.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Resit"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T00:32:26.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Test_Failed"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T00:57:29.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T01:12:19.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T02:33:07.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T03:02:24.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T03:12:28.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T03:40:01.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T03:42:34.510+01:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="Case No. 07 [positive]"/>
+		<string key="trace:type" value="positive"/>
+		<event>
+			<string key="Driver" value="Fabrizio"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T19:53:11.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="3"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T20:00:31.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="5"/>
+			<string key="concept:name" value="Resit"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T20:05:14.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Test_Failed"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T20:51:14.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T22:18:53.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T22:38:45.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T22:43:24.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T23:20:29.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T23:23:06.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T23:29:05.510+01:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="Case No. 08 [positive]"/>
+		<string key="trace:type" value="positive"/>
+		<event>
+			<string key="Driver" value="Fabrizio"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T15:56:13.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="4"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T17:04:33.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Resit"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T17:23:45.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Test_Failed"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T17:34:39.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T18:03:19.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T18:09:20.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T18:13:02.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T18:40:52.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T18:48:58.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T18:56:16.510+01:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="Case No. 09 [positive]"/>
+		<string key="trace:type" value="positive"/>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T12:11:37.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="3"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T12:13:29.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Resit"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T12:19:51.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Test_Failed"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T13:07:20.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T13:22:21.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T13:24:55.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T13:30:11.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T13:37:52.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T14:26:25.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T15:11:14.510+01:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="Case No. 10 [positive]"/>
+		<string key="trace:type" value="positive"/>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T07:52:13.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="3"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T07:57:11.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="5"/>
+			<string key="concept:name" value="Resit"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T08:01:57.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T08:07:36.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T08:10:42.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T08:33:10.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T09:22:45.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T09:24:13.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Fabrizio"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T09:59:27.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Test_Failed"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T10:18:30.510+01:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="Case No. 11 [positive]"/>
+		<string key="trace:type" value="positive"/>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T03:56:52.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="4"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T04:47:58.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Test_Failed"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T04:54:38.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T05:01:09.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T05:16:12.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T06:49:35.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T06:55:32.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="3"/>
+			<string key="concept:name" value="Resit"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T07:20:57.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T07:21:14.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T07:25:02.510+01:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="Case No. 12 [positive]"/>
+		<string key="trace:type" value="positive"/>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T00:17:11.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="4"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T00:35:12.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="5"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T01:26:23.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="3"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T02:21:22.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Test_Failed"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T02:29:20.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T02:38:21.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="3"/>
+			<string key="concept:name" value="Resit"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T02:42:08.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T02:44:51.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T02:59:49.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Test_Failed"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T03:08:51.510+01:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="Case No. 13 [positive]"/>
+		<string key="trace:type" value="positive"/>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T20:14:26.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="5"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T20:25:27.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="4"/>
+			<string key="concept:name" value="Resit"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T20:44:00.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Test_Failed"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T21:28:40.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T21:54:33.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T21:57:47.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T22:28:14.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T22:50:31.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T23:23:17.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T23:30:35.510+01:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="Case No. 14 [positive]"/>
+		<string key="trace:type" value="positive"/>
+		<event>
+			<string key="Driver" value="Fabrizio"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T15:58:35.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="3"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T16:31:54.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T16:44:29.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T16:57:20.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T17:22:36.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T18:39:10.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Resit"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T18:44:09.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="5"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T19:10:25.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Test_Failed"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T19:37:25.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T19:43:46.510+01:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="Case No. 15 [positive]"/>
+		<string key="trace:type" value="positive"/>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T12:01:29.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="5"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T12:18:01.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T12:52:55.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T13:28:08.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T13:55:08.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Test_Failed"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T14:12:57.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="4"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T14:53:59.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="4"/>
+			<string key="concept:name" value="Resit"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T15:09:22.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T15:11:01.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T15:44:46.510+01:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="Case No. 16 [positive]"/>
+		<string key="trace:type" value="positive"/>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="3"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T08:12:29.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T08:16:52.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Resit"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T08:21:42.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Test_Failed"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T09:06:37.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T10:38:12.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T10:54:20.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T10:56:15.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T11:23:29.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T11:24:02.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T11:30:35.510+01:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="Case No. 17 [positive]"/>
+		<string key="trace:type" value="positive"/>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T05:03:28.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="3"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T05:15:57.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T05:49:09.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T06:04:37.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T06:26:02.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="3"/>
+			<string key="concept:name" value="Resit"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T06:48:16.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Test_Failed"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T06:54:01.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T07:08:02.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T07:21:04.510+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T07:27:36.510+01:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="Case No. 18 [positive]"/>
+		<string key="trace:type" value="positive"/>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T00:08:43.510+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="3"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T00:30:24.510+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T00:35:28.510+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="5"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T01:27:03.510+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="4"/>
+			<string key="concept:name" value="Resit"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T01:39:17.510+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Test_Failed"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T02:01:11.510+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T02:07:38.510+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T02:11:35.510+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T02:24:04.510+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T03:02:21.510+01:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="Case No. 19 [positive]"/>
+		<string key="trace:type" value="positive"/>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-29T19:51:09.510+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-29T20:07:53.510+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="5"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-29T20:16:56.510+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-29T20:45:03.510+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-29T21:27:27.510+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Test_Failed"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-29T21:35:35.510+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-29T22:10:01.510+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-29T22:30:10.510+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Test_Failed"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-29T22:48:58.510+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="4"/>
+			<string key="concept:name" value="Resit"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-29T23:35:52.510+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="Case No. 20 [positive]"/>
+		<string key="trace:type" value="positive"/>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="5"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-29T16:21:09.510+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="3"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-29T16:46:13.510+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-29T16:55:03.510+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-29T17:11:01.510+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-29T17:23:23.510+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-29T17:35:11.510+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Test_Failed"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-29T17:44:55.510+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Getting_License"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-29T18:37:52.510+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Resit"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-29T18:38:48.510+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<string key="concept:name" value="Test_Failed"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-29T19:05:41.510+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="Case No. 21 [negative]"/>
+		<string key="trace:type" value="negative"/>
+		<event>
+			<string key="Driver" value="Raimundas"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T19:49:10.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T20:17:11.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Fabrizio"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T20:31:11.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T20:35:50.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T21:27:51.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T22:15:07.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T22:29:45.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T22:31:10.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T23:11:20.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="5"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T23:36:55.402+01:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="Case No. 22 [negative]"/>
+		<string key="trace:type" value="negative"/>
+		<event>
+			<string key="Driver" value="Fabrizio"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T16:50:47.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T16:51:51.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Fabrizio"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T17:32:49.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T17:35:36.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T17:53:39.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T18:42:05.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T18:46:00.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T19:01:07.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T19:08:07.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="5"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T19:45:42.402+01:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="Case No. 23 [negative]"/>
+		<string key="trace:type" value="negative"/>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T11:50:10.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T11:50:30.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Fabrizio"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T12:52:48.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T13:57:27.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T14:09:30.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T14:26:13.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T15:03:01.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T15:03:03.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T15:16:11.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="5"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T15:20:22.402+01:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="Case No. 24 [negative]"/>
+		<string key="trace:type" value="negative"/>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T08:12:12.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T08:20:02.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Fabrizio"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T08:29:41.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T08:42:19.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T09:19:36.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T10:11:30.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T10:22:08.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T10:22:58.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T11:40:12.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="4"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T11:43:57.402+01:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="Case No. 25 [negative]"/>
+		<string key="trace:type" value="negative"/>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T04:31:53.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T04:48:58.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T04:49:42.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T05:00:50.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T05:22:59.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T05:38:23.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T06:08:14.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T06:13:57.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T06:14:13.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="5"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T07:42:19.402+01:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="Case No. 26 [negative]"/>
+		<string key="trace:type" value="negative"/>
+		<event>
+			<string key="Driver" value="Raimundas"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T00:01:00.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T00:10:12.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T00:17:41.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T00:41:47.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T00:44:41.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T00:47:11.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T02:21:24.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T02:42:07.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T03:16:28.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="3"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-11-01T03:27:03.402+01:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="Case No. 27 [negative]"/>
+		<string key="trace:type" value="negative"/>
+		<event>
+			<string key="Driver" value="Fabrizio"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T20:53:54.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Raimundas"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T21:00:00.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T21:36:31.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T22:23:09.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T22:42:11.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T22:54:01.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T23:17:38.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T23:30:39.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T23:40:02.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="4"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T23:48:09.402+01:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="Case No. 28 [negative]"/>
+		<string key="trace:type" value="negative"/>
+		<event>
+			<string key="Driver" value="Fabrizio"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T16:00:52.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T16:15:01.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T16:29:25.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T17:02:55.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T17:17:27.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T17:19:19.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T17:42:48.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T18:22:18.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T18:37:49.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="5"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T19:27:38.402+01:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="Case No. 29 [negative]"/>
+		<string key="trace:type" value="negative"/>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T11:54:37.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T12:19:06.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T12:21:42.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T13:32:24.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T13:35:21.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T13:40:51.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T13:53:47.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T14:29:10.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T14:43:06.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="3"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T14:52:10.402+01:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="Case No. 30 [negative]"/>
+		<string key="trace:type" value="negative"/>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T07:51:09.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Raimundas"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T08:23:42.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T08:36:58.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T09:03:07.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T09:11:23.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T09:31:10.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T10:15:01.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T10:27:58.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T10:40:17.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="4"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T11:38:52.402+01:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="Case No. 31 [negative]"/>
+		<string key="trace:type" value="negative"/>
+		<event>
+			<string key="Driver" value="Raimundas"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T04:51:56.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Raimundas"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T05:57:58.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T05:59:16.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T06:33:47.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T06:51:35.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T06:58:18.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T06:59:30.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T07:22:41.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T07:29:21.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="4"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T07:35:36.402+01:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="Case No. 32 [negative]"/>
+		<string key="trace:type" value="negative"/>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T00:04:12.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Fabrizio"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T01:26:57.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T02:12:39.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T02:48:00.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T03:05:19.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T03:28:51.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T03:32:45.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T03:34:16.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T03:36:02.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="3"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-31T03:40:26.402+01:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="Case No. 33 [negative]"/>
+		<string key="trace:type" value="negative"/>
+		<event>
+			<string key="Driver" value="Raimundas"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T20:17:36.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Fabrizio"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T20:31:43.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T20:36:04.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T20:57:02.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T21:40:17.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T21:47:57.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T21:49:37.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T22:05:30.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T22:10:11.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="4"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T23:21:49.402+01:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="Case No. 34 [negative]"/>
+		<string key="trace:type" value="negative"/>
+		<event>
+			<string key="Driver" value="Fabrizio"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T15:54:54.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Fabrizio"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T16:06:33.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T16:28:04.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T16:49:01.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T17:12:59.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T18:05:37.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T19:00:58.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T19:03:26.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T19:06:20.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="3"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T19:13:15.402+01:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="Case No. 35 [negative]"/>
+		<string key="trace:type" value="negative"/>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T11:52:39.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Fabrizio"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T12:33:54.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T13:02:32.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T13:17:48.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T13:21:04.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T13:24:18.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T14:29:35.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T14:50:35.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T15:19:24.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="3"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T15:20:03.402+01:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="Case No. 36 [negative]"/>
+		<string key="trace:type" value="negative"/>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T08:15:35.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Raimundas"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T08:39:05.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T08:45:12.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T09:04:36.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T09:06:32.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T09:56:47.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T10:10:00.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T10:22:06.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T11:06:21.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="5"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T11:10:36.402+01:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="Case No. 37 [negative]"/>
+		<string key="trace:type" value="negative"/>
+		<event>
+			<string key="Driver" value="Marlon"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T03:57:09.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T05:39:27.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T05:42:32.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T05:43:56.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T06:18:07.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T06:30:04.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T06:32:58.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T07:32:41.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T07:37:05.402+01:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="5"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T07:40:37.402+01:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="Case No. 38 [negative]"/>
+		<string key="trace:type" value="negative"/>
+		<event>
+			<string key="Driver" value="Raimundas"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T00:10:57.402+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T00:31:36.402+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T00:43:22.402+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T01:04:30.402+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T01:11:05.402+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T01:14:35.402+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T01:27:29.402+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T02:22:25.402+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T02:44:07.402+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="5"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-30T03:12:11.402+01:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="Case No. 39 [negative]"/>
+		<string key="trace:type" value="negative"/>
+		<event>
+			<string key="Driver" value="Fabrizio"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-29T20:19:15.402+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-29T20:22:28.402+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-29T20:34:58.402+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-29T20:42:02.402+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-29T20:57:31.402+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-29T21:15:06.402+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-29T21:57:37.402+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-29T22:41:22.402+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-29T22:47:30.402+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="3"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-29T23:47:06.402+02:00"/>
+		</event>
+	</trace>
+	<trace>
+		<string key="concept:name" value="Case No. 40 [negative]"/>
+		<string key="trace:type" value="negative"/>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-29T16:03:23.402+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-29T16:09:10.402+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-29T16:10:59.402+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="2"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-29T16:34:23.402+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-29T17:00:35.402+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-29T17:36:50.402+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-29T18:23:01.402+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-29T18:32:11.402+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="1"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-29T19:40:37.402+02:00"/>
+		</event>
+		<event>
+			<string key="Driver" value="Mike"/>
+			<int key="Grade" value="5"/>
+			<string key="concept:name" value="Driving_Test"/>
+			<string key="lifecycle:transition" value="complete"/>
+			<date key="time:timestamp" value="2022-10-29T19:48:27.402+02:00"/>
+		</event>
+	</trace>
+</log>

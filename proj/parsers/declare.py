@@ -1,5 +1,8 @@
+from __future__ import annotations
+
 from enum import Enum
 import typing
+from json import JSONEncoder
 import json
 import re
 
@@ -53,6 +56,7 @@ be negate `is not`. ie. `template[a,b] |a is x| b is not x |1,2,s`
 
 SUGGESTIONS OR DOUBTS
  - comment lines starting from `#`
+ - have some reserve words
  
 
 
@@ -64,14 +68,80 @@ class DECLARE_RESERVED:
     condition_symbols = [">", "<", "=", "is", ">=", "<="]
 
 
-class DECLARE_LINE(Enum):
+class DECLARE_LINE_DEFINITION(Enum):
     DEFINE_EVENT_LINE = 1
     DEFINE_PROP_LINE = 2  # TODO: fix name
     DEFINE_PROP_VALUE_LINE = 3  # Constraints
     DEFINE_CONSTRAINT_TEMPLATE = 4
 
 
-class DECLARE2LP:
+class DeclarePropertyValueType(Enum):
+    INTEGER = "integer"
+    FLOAT = "float"
+    ENUMERATION = "enumeration"
+
+
+class DeclareObjectPropertyType(JSONEncoder):
+    typ: DeclarePropertyValueType = None
+    is_range_typ: bool = None
+    value: str | Enum | typing.List[str] = None
+
+    def __init__(self, typ: DeclarePropertyValueType = None, is_range_typ: bool = None,
+                 value: str | Enum | typing.List[str] = None):
+        self.typ = typ
+        self.is_range_typ = is_range_typ
+        self.value = value
+
+    def __iter__(self):
+        yield from {
+            "typ": self.typ,
+            "is_range_typ": self.is_range_typ,
+            "value": self.value
+        }.items()
+
+    def __dict__(self):
+        return {"typ", self.typ}
+
+    def __repr__(self):
+        return self.__str__()
+
+    def __str__(self):
+        return f"""{{"typ": { self.typ or "null" },"is_range_typ": { self.is_range_typ or "null" },"value": { self.value  or "null" }}}"""
+        # return json.dumps(self, ensure_ascii=False)
+
+    def to_json(self):
+        return self.__dict__()
+
+    def default(self, o: typing.Any) -> typing.Any:
+        return o.__dict__
+
+    def encode(self, o: typing.Any) -> str:
+        return self.__str__()
+
+class DeclareModel:
+    # obj: dict[str, typing.Dict[str, typing.Dict[str, DeclareObjectPropertyType] | str]] = {}
+    obj: dict = {}
+    # typing.Dict[str, Enum | str | typing.List[str]]
+    # {
+    #     "A": {
+    #         "object_type": "activity"
+    #         "props": {
+    #           "mark": {
+    #               "typ": "integer",
+    #               "is_range_typ": True,
+    #               "val": "between 1 and 5"
+    #           },
+    #           "grade": {
+    #               "typ": "float",
+    #               "is_range_typ": True,
+    #               "val": "between 1 and 5"
+    #           }
+    #        }
+    #     }
+    # }
+
+
+class DeclareParser:
     CONSTRAINTS_TEMPLATES_PATTERN = "^(.*)\[(.*)\]\s*(.*)$"
     CONSTRAINTS_TEMPLATES = {
         "Init($,$)": {"argsNum": 1, "semantic": "First task is A"},
@@ -98,33 +168,42 @@ class DECLARE2LP:
         "NotChainPrecedence($,$)": {"argsNum": 2, "semantic": "If task A executed, previous executed task was not B"},
     }
     declare_content: [str]
+    model: DeclareModel
     acts = {}  # { act_name: [] }
 
     def __init__(self, content: typing.Union[str, typing.List[str]]):
         self.load_declare_content(content)
+        self.model = DeclareModel()
 
     def load_declare_content(self, content: typing.Union[str, typing.List[str]]):
         if isinstance(content, str):
             self.declare_content = content.split('\n')
         else:
             self.declare_content = content
+        self.model = DeclareModel()
 
     def parse(self):
+        line_index = 0
         for line in self.declare_content:
             line = line.strip('\n').strip()  # clear the string, removing whitespace
-            if len(line) > 0 and line.startswith("#"):
-                # x = self.is_object_defination(line)
-                # print(f'Is line object defining({x}): ', line)
-                x = self.is_object_prop_definition(line)
-                print(f'Is line prop defining({x}): ', line)
-            # self.__parse_act_definition(line)
-        # print(json.dumps(self.acts, indent=4))
-        # print(self.acts)
+            line_index = line_index + 1
+            if len(line) > 0 and not line.startswith("#"):
+                self.detect_line(line, line_index)
+        # print(self.model.obj)
+        # dop = DeclareObjectPropertyType(value="da1")
+        # with open("ftes.txt", "w+") as f:
+        #     json.dump( dop, f)
+        # print(json.dumps(self.model.obj))
+        print(self.model.obj)
 
-    def detect_line(self, line: str):
+    def detect_line(self, line: str, line_idx: int):
         line = line.strip()
         if self.is_object_definition(line):
-            self.__parse_act_definition(line)
+            self.__parse_object_definition(line, line_idx)
+        if self.is_object_prop_definition(line):
+            self.__parse_object_prop_definition(line, line_idx)
+        if self.is_object_prop_value_definition(line):
+            self.__parse_object_prop_value_definition(line, line_idx)
 
     def is_object_definition(self, line: str) -> bool:
         x = re.search("^[\w]+ [\w]+$", line, re.MULTILINE)
@@ -142,13 +221,53 @@ class DECLARE2LP:
         x = re.search(self.CONSTRAINTS_TEMPLATES_PATTERN, line, re.MULTILINE)
         return x is not None
 
-    def __parse_act_definition(self, line: str):
-        line = line.strip()
-        p = line.split(' ')
-        act_list = []
-        if p[0] in self.acts:
-            act_list = self.acts[p[0].strip()]  # activity
-            act_list.append(p[1:])
-        else:
-            act_list = [p[1:]]
-            self.acts[p[0]] = act_list
+    def __parse_object_definition(self, line: str, line_idx: int):
+        var_declaration: typing.List[str] = line.split(' ')
+        if len(var_declaration) != 2:
+            raise ValueError(f"Error in line {line_idx}: {line}.\n\tCan have only two words for defining an event: "
+                             f"`EventType EventName`")
+        obj_name = var_declaration[1].strip()
+        typ_obj = var_declaration[0].strip()
+        if obj_name in self.model.obj:
+            raise KeyError(f"Error in line {line_idx}: {line}.\n\tMultiple times declared {obj_name}")
+        if self.__is_reserved_keyboard(obj_name):
+            raise NameError(f"""`{obj_name}` reserved object name used.""")
+        if self.__is_reserved_keyboard(typ_obj):
+            raise NameError(f"""Type of object defined(`{typ_obj}`) is already reserved.""")
+        self.model.obj[obj_name] = {"object_type": typ_obj}
+
+    def __parse_object_prop_definition(self, line: str, line_idx: int):
+        arr = line.replace('bind', '').strip().split(':')  # LINE: bind B: grade, mark, name
+        obj_name = arr[0].strip()  # B
+        propsOrAttrs = arr[1].strip().split(',')  # grade, mark, name
+        # propsOrAttrs = [p.strip() for p in propsOrAttrs]
+        if obj_name not in self.model.obj:
+            raise NameError(f"""Error in line: {line_idx}""")
+        obj = self.model.obj[obj_name]
+        if "props" not in obj:
+            obj["props"]: typing.Dict[str, DeclareObjectPropertyType] = {}
+            # obj["props"] = {}
+        props = obj["props"]
+        for p in propsOrAttrs:
+            p = p.strip()
+            if self.__is_reserved_keyboard(p):
+                raise NameError(f"""Type of object property defined(`{p}`) is already reserved.""")
+            props[p] = DeclareObjectPropertyType()
+
+    def __parse_object_prop_value_definition(self, line: str, line_idx: int):
+        arr = line.strip().split(':')
+        if len(arr) != 2:
+            raise ValueError(f"Failed to parse in line {line_idx}: {line}")
+        props = arr[0].strip()
+        value = arr[1].strip()
+
+
+    def __is_reserved_keyboard(self, word: str) -> bool:
+        ws = DECLARE_RESERVED.words
+        return word in ws
+
+
+class DECLARE2LP:
+    #  TODO: Convert declare to .lp  using DeclareModel class.
+
+    pass

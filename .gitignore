@@ -143,8 +143,10 @@ temp/
 /temp
 temp
 
+**/.idea/
 **/idea/
 **/idea/*
+**/.idea/*
 **/*.iml/
 **/*.iml
 /out/

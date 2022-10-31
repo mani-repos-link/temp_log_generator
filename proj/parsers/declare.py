@@ -154,10 +154,6 @@ class DeclareModel:
     #     }
     # }
 
-    s = [{
-        "template_name": "Res", "ev": [], "conditions": "",
-        "active_cond": "", "correlation_cond": "", "ts": ""
-    }]
 
 class DeclareParser:
     CONSTRAINTS_TEMPLATES_PATTERN = "^(.*)\[(.*)\]\s*(.*)$"
@@ -212,7 +208,7 @@ class DeclareParser:
         # with open("ftes.txt", "w+") as f:
         #     json.dump( dop, f)
         # print(json.dumps(self.model.obj))
-        print(self.model.obj)
+        return self.model
 
     def detect_line(self, line: str, line_idx: int):
         line = line.strip()
@@ -384,10 +380,60 @@ class DeclareParser:
         ws = DECLARE_RESERVED.words
         return word in ws
 
+
 """
 TODO: LP doesn't support float, thus we hav to Scale floating attribute bounds to the lowest integers
 """
 class DECLARE2LP:
     #  TODO: Convert declare to .lp  using DeclareModel class.
+    lp: LPBUILDER
+    def __init__(self) -> None:
+        self.lp = LPBUILDER()
+        
+    def from_decl(self, model: DeclareModel) -> LPBUILDER:
+        keys = model.obj.keys()
+        for k in keys:
+            obj = model.obj[k]
+            obj_typ = obj["object_type"]
+            self.lp.define_predicate(k, obj_typ)
+            props = obj["props"]
+            for attr in props:
+                self.lp.define_predicate_attr(k, attr)
+                dopt: DeclareObjectPropertyType = props[attr]
+                self.lp.set_attr_value(attr, dopt)
 
-    pass
+            #  print(obj)
+        return self.lp
+
+
+class LPBUILDER:
+    lines: typing.List[str] = []
+
+    def define_predicate(self, name: str, predicate_name: str):
+        self.lines.append(f'{predicate_name}({name}).')
+
+    def define_predicate_attr(self, name: str, attr: str):
+        self.lines.append(f'has_attribute({name}, {attr}).')
+
+    def set_attr_value(self, attr: str, value: DeclareObjectPropertyType):
+        # TODO: add value
+        if value.is_range_typ:
+            v = ""
+            if value.typ == DeclarePropertyValueType.FLOAT:
+                # TODO: scale to lower int
+                pass
+            v = value.value.replace("integer", "").replace("between", "").replace("and", "").strip()
+            v = ' '.join(v.split())
+            v = v.split(" ")
+            self.lines.append(f'value({attr}, {v[0]}..{v[1]}).')
+        elif value.typ==DeclarePropertyValueType.ENUMERATION:
+            lst = value.value.split(",")
+            for s in lst:
+                s = s.strip()
+                self.lines.append(f'value({attr}, {s}).')
+        # self.lines.append(f'value({attr}, {value}).')
+    
+    def __str__(self) -> str:
+        return "\n".join(self.lines)
+        
+

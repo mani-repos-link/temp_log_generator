@@ -55,8 +55,7 @@ with open(decl_model) as file:
             elif len(activities) == 2:
                 activation_cond = line[1]  # NOTAAAA: qui assumiamo che la signature è del tipo Template[A,B]
                 mp_constraint.append((activities[0], activation_cond))
-                correlation_cond = line[
-                    2]  # Se la signature fosse di tipo Template[B,A] bisognerebbe invertire le due condizioni
+                correlation_cond = line[2]  # Se la signature fosse di tipo Template[B,A] bisognerebbe invertire le due condizioni
                 mp_constraint.append((activities[1], correlation_cond))
             constraints.append(tuple(mp_constraint))
 

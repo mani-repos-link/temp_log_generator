@@ -1,3 +1,5 @@
+package Declare;
+
 import core.Global;
 import fnparser.DataExpression;
 import fnparser.DataExpressionParser;

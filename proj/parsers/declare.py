@@ -384,7 +384,9 @@ class DeclareParser:
         ws = DECLARE_RESERVED.words
         return word in ws
 
-
+"""
+TODO: LP doesn't support float, thus we hav to Scale floating attribute bounds to the lowest integers
+"""
 class DECLARE2LP:
     #  TODO: Convert declare to .lp  using DeclareModel class.
 

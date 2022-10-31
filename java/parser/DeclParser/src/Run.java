@@ -1,4 +1,7 @@
+import Declare.DeclareModel;
+import Declare.DeclareParser;
 import fnparser.DeclareParserException;
+import toLP.Decl2LP;
 
 public class Run {
 
@@ -11,11 +14,14 @@ public class Run {
 						"grade, mark: integer between 1 and 5\n" +
 						"Response[A, B] |A.grade = 3 |B.grade = 5 |1,5,s";
 		DeclareModel dm = DeclareParser.parse(decl);
-		System.out.println("Test");
-		System.out.println(dm);
-		System.out.println(dm.getDataToActivity());
+//		System.out.println("Test");
+//		System.out.println(dm);
+//		System.out.println(dm.getDataToActivity());
+		String lp = Decl2LP.decl2lp(decl);
+		System.out.println(lp);
 //		System.out.println(dm.getDataConstraints().get(0).getFirstFunction().getArgs());
 //		System.out.println(dm.getDataConstraints().get(0).getFirstFunction().getExpression());
 	}
+
 
 }

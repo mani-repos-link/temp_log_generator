@@ -1,3 +1,5 @@
+package Declare;
+
 import lang.Activity;
 import lang.Constraint;
 import lang.DataConstraint;
@@ -156,7 +158,7 @@ public class DeclareModel {
     
     @Override
     public String toString() {
-        return "DeclareModel{" +
+        return "Declare.DeclareModel{" +
                 "activities=" + activities +
                 ", constraints=" + constraints +
                 ", dataConstraints=" + dataConstraints +

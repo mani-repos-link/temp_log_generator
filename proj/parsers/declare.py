@@ -66,7 +66,7 @@ SUGGESTIONS OR DOUBTS
 
 class DECLARE_RESERVED:
     words = ["is", "not", "in", "between", "integer", "float", "enumeration", "and"]
-    condition_symbols = [">", "<", "=", "is", ">=", "<="]
+    condition_symbols = [">", "<", "=", "is", ">=", "<=", "is not", "in", "not"]
 
 
 class DECLARE_LINE_DEFINITION(Enum):
@@ -125,8 +125,17 @@ class ConstraintTemplates:
     events_list: typing.List[str]
     conditions: str
     active_cond: str
+    active_cond_parsed: typing.Dict[str, str]
+    correlation_cond_parsed: typing.Dict[str, str]
     correlation_cond: str
     ts: str
+
+    def __repr__(self):
+        return self.__str__()
+
+    def __str__(self):
+        return f"{{\"name\": {self.template_name}, \"events\": {self.events_list}, \"conditions\": {self.conditions}, " \
+               f"\"active_cond\": {self.active_cond}, \"correlation_cond\": {self.correlation_cond}, \"ts\": {self.ts} }}"
 
 
 class DeclareModel:
@@ -353,16 +362,22 @@ class DeclareParser:
         # if len(events) == 1:
         #     conds_list
         conds_len = len(conds_list)
+
         if conds_len == 0:
             pass
         if conds_len == 1:
             ct.active_cond = conds_list[0]
+            ct.active_cond_parsed = self.__parse_constraints_cond(ct.active_cond)
         elif conds_len == 2:
             ct.active_cond = conds_list[0]
             ct.correlation_cond = conds_list[1]
+            ct.active_cond_parsed = self.__parse_constraints_cond(ct.active_cond)
+            ct.correlation_cond_parsed = self.__parse_constraints_cond(ct.correlation_cond)
         elif conds_len == 3:
             ct.active_cond = conds_list[0]
             ct.correlation_cond = conds_list[1]
+            ct.active_cond_parsed = self.__parse_constraints_cond(ct.active_cond)
+            ct.correlation_cond_parsed = self.__parse_constraints_cond(ct.correlation_cond)
             ct.ts = conds_list[2]
         else:
             # TODO: what to in this case
@@ -375,6 +390,19 @@ class DeclareParser:
             self.model.templates_dict[tmp_name] = lis
         lis.append(ct)
 
+    def __parse_constraints_cond(self, cond1: str) -> dict[str, str]:
+        cond = cond1.strip()
+        cond = ' '.join(cond.split())
+        cond_parser_group_reg = "^([\w]+.[\w]+)[ ]*(>|<|=|>=|<=|is[ ]*not|not|is|in)[ ]*([\w]+[.]{0,1}[\w]{0,})$"
+        compiler = re.compile(cond_parser_group_reg)
+        al = compiler.fullmatch(cond)
+        if len(al.groups()) != 3:
+            raise ValueError(f"Unable to parse {cond1}. Unknown condition")
+
+        p1 = al.group(1).strip()
+        p2 = al.group(2).strip()
+        p3 = al.group(3).strip()
+        return {"obj_attr": p1, "cond": p2, "val": p3}
 
     def __is_reserved_keyboard(self, word: str) -> bool:
         ws = DECLARE_RESERVED.words
@@ -387,6 +415,7 @@ TODO: LP doesn't support float, thus we hav to Scale floating attribute bounds t
 class DECLARE2LP:
     #  TODO: Convert declare to .lp  using DeclareModel class.
     lp: LPBUILDER
+
     def __init__(self) -> None:
         self.lp = LPBUILDER()
         
@@ -402,12 +431,19 @@ class DECLARE2LP:
                 dopt: DeclareObjectPropertyType = props[attr]
                 self.lp.set_attr_value(attr, dopt)
 
-            #  print(obj)
+        templates_idx = 0
+        # for tmp_name in model.templates_dict.keys():
+        for ct in model.templates:
+            self.lp.add_template(ct.template_name, ct, templates_idx, model.props)
+            # template_line.append(f"template({templates_idx},\"{tmp_name}\")")
+            templates_idx = templates_idx + 1
         return self.lp
 
 
 class LPBUILDER:
     lines: typing.List[str] = []
+    attributes_values: typing.List[str] = []
+    templates_s: typing.List[str] = []
 
     def define_predicate(self, name: str, predicate_name: str):
         self.lines.append(f'{predicate_name}({name}).')
@@ -416,7 +452,7 @@ class LPBUILDER:
         self.lines.append(f'has_attribute({name}, {attr}).')
 
     def set_attr_value(self, attr: str, value: DeclareObjectPropertyType):
-        # TODO: add value
+        val_lp = ""
         if value.is_range_typ:
             v = ""
             if value.typ == DeclarePropertyValueType.FLOAT:
@@ -425,15 +461,47 @@ class LPBUILDER:
             v = value.value.replace("integer", "").replace("between", "").replace("and", "").strip()
             v = ' '.join(v.split())
             v = v.split(" ")
-            self.lines.append(f'value({attr}, {v[0]}..{v[1]}).')
-        elif value.typ==DeclarePropertyValueType.ENUMERATION:
+            val_lp = f'value({attr}, {v[0]}..{v[1]}).'
+        elif value.typ == DeclarePropertyValueType.ENUMERATION:
             lst = value.value.split(",")
+            value_in_lp = []
             for s in lst:
                 s = s.strip()
-                self.lines.append(f'value({attr}, {s}).')
-        # self.lines.append(f'value({attr}, {value}).')
-    
+                val_lp_1 = f'value({attr}, {s}).'
+                if val_lp_1 not in self.attributes_values:
+                    value_in_lp.append(val_lp_1)
+                val_lp = "\n".join(value_in_lp)
+        else:
+            # TODO: check value if it is numeric and float... scale it
+            val_lp = f'value({attr}, {value.value}).'
+
+        if val_lp not in self.attributes_values:
+            self.attributes_values.append(val_lp)
+
+    def add_template(self, name, ct: ConstraintTemplates, idx: int, props: dict[str, typing.List[DeclareObjectPropertyType]]):
+        self.templates_s.append(f"template({idx},\"{name}\").")
+        for conds in ct.events_list:  # A, B   <- depends on the type of template
+            conds = conds.strip()
+            self.templates_s.append(f"activation({idx},{conds}).")
+            if ct.active_cond_parsed:
+                nameAttr = ct.active_cond_parsed["obj_attr"].split(".")[-1]
+                if nameAttr not in props:
+                    raise ValueError(f"{nameAttr} not defined in any events")
+                dopt = props[nameAttr]
+                if dopt[0].typ == DeclarePropertyValueType.ENUMERATION:
+                    pass
+                print(props[nameAttr])
+            print(ct.active_cond_parsed)
+
+
+            # act_cond = ct.active_cond.strip().replace("")
+            # self.templates_s.append(f"activation_condition({idx},T) :- assigned_value({}).")
+            self.templates_s.append("\n")
+        # ct.
+
     def __str__(self) -> str:
-        return "\n".join(self.lines)
-        
+        line = "\n".join(self.lines)
+        line = line + "\n\n" + "\n".join(self.attributes_values)
+        line = line + "\n\n" + "\n".join(self.templates_s)
+        return line
 

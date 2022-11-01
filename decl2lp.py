@@ -122,8 +122,7 @@ def tree_conditions_to_asp(condition, expression, condition_name, i, file, condi
         if expression.isliteral:
             condition_name = str(expression)
         else:
-            condition_name = condition + '_condition_' + ''.join(
-                [str(symbol).split('_')[2] for symbol in expression.get_symbols()])
+            condition_name = condition + '_condition_' + ''.join([str(symbol).split('_')[2] for symbol in expression.get_symbols()])
             while condition_name in conditions:
                 condition_name = condition_name + '_'
             conditions.add(condition_name)
@@ -186,6 +185,8 @@ def condition_to_asp(name, cond, i, file):
         for rel in relations:
             if rel in cond:
                 value = cond.split(rel)[1]
+                print(cond, name, attrib, rel, value)
+                print('{} :- assigned_value({},V,T),V{}{}.'.format(name, attrib, rel, value))
                 file.write('{} :- assigned_value({},V,T),V{}{}.\n'.format(name, attrib, rel, value))
                 break
 

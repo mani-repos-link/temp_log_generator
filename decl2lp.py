@@ -63,6 +63,7 @@ with open(decl_model) as file:
 ##### DECL2ASP
 
 def parsed_condition(condition, string):
+    print("condition", condition, "str", string)
     string = re.sub('\)', ' ) ', string)
     string = re.sub('\(', ' ( ', string)
     string = string.strip()
@@ -140,6 +141,7 @@ def tree_conditions_to_asp(condition, expression, condition_name, i, file, condi
         for arg in formula_args:
             arg_name = expression_to_name(arg)
             file.write('{} :- {}.\n'.format(condition_name, arg_name))
+            print("arg_name", arg_name)
             tree_conditions_to_asp(condition, arg, no_params(arg_name), i, file, conditions)
     if formula_type == '&':
         args_name = ''
@@ -156,6 +158,7 @@ def tree_conditions_to_asp(condition, expression, condition_name, i, file, condi
 
 def condition_to_asp(name, cond, i, file):
     name = name + '({},T)'.format(i)
+    print(attrib_to_val)
     for attrib in attrib_to_val:
         if attrib in cond:
             attrib_type = attrib_to_val[attrib][0]
@@ -185,8 +188,8 @@ def condition_to_asp(name, cond, i, file):
         for rel in relations:
             if rel in cond:
                 value = cond.split(rel)[1]
-                print(cond, name, attrib, rel, value)
-                print('{} :- assigned_value({},V,T),V{}{}.'.format(name, attrib, rel, value))
+                # print(cond, name, attrib, rel, value)
+                # print('{} :- assigned_value({},V,T),V{}{}.'.format(name, attrib, rel, value))
                 file.write('{} :- assigned_value({},V,T),V{}{}.\n'.format(name, attrib, rel, value))
                 break
 
@@ -222,6 +225,7 @@ for i, constraint in enumerate(constraints):
     # Activation Condition
     activation_condition = constraint[1][1]
     expression, name_to_cond, cond_to_name = parsed_condition('activation', activation_condition)
+    print('I  i  i', i, constraint)
     if expression.isliteral:
         f.write('activation_condition({},T):- {}({},T).\n'.format(i, str(expression), i))
     else:

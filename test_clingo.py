@@ -13,6 +13,7 @@ class ExampleApp:
         filename = "clingo_output.asp"
         sc: SolveControl = output.context
         fl = []
+        print(output.__dict__)
         for x in sc.symbolic_atoms:
             # True            False         364        [String('Succession'), Function('s_1', [], True)
             # print(x.is_fact, x.is_external, x.literal, x.symbol.negative)
@@ -22,6 +23,9 @@ class ExampleApp:
         # print("file generated", filename)
         print(output)
 
+    def handle_output2(self, output: clingo.solving.Model):
+        for x in output.context.symbolic_atoms:
+            print(x)
     #   TODO: pm4py
 
     def run(self):
@@ -31,7 +35,7 @@ class ExampleApp:
         ctl.load("generation_instance.lp")
         ctl.ground([("base", [])], context=self)
         # out: Union[SolveHandle, SolveResult] = ctl.solve(on_model=self.handle_output)
-        im: Union[SolveHandle, SolveResult] = ctl.solve(on_model=self.handle_output)
+        im: Union[SolveHandle, SolveResult] = ctl.solve(on_model=self.handle_output2)
         # print(im)
         # im: Union[SolveHandle, SolveResult] = ctl.solve(on_model=self.handle_output)
         # print(im)

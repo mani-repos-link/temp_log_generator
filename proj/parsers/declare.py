@@ -6,6 +6,7 @@ import typing
 from json import JSONEncoder
 import json
 import re
+import boolean
 
 """
 Declare Model Syntax
@@ -162,6 +163,105 @@ class DeclareModel:
     #        }
     #     }
     # }
+
+
+class DeclareConstraintConditionResolver:
+
+    def parsed_condition(self, condition: typing.Literal['activation', 'correlation'], string: str):
+        string = re.sub('\)', ' ) ', string)
+        string = re.sub('\(', ' ( ', string)
+        string = string.strip()
+        string = re.sub(' +', ' ', string)
+        string = re.sub('is not', 'is_not', string)
+        string = re.sub('not in', 'not_in', string)
+        string = re.sub(' *> *', '>', string)
+        string = re.sub(' *< *', '<', string)
+        string = re.sub(' *= *', '=', string)
+        string = re.sub(' *<= *', '<=', string)
+        string = re.sub(' *>= *', '>=', string)
+        form_list = string.split(" ")
+
+        for i in range(len(form_list) - 1, -1, -1):
+            el = form_list[i]
+            if el == 'in' or el == 'not_in':
+                end_index = form_list[i:].index(')')
+                start_index = i - 1
+                end_index = end_index + i + 1
+                form_list[start_index:end_index] = [' '.join(form_list[start_index:end_index])]
+            elif el == 'is' or el == 'is_not':
+                start_index = i - 1
+                end_index = i + 2
+                form_list[start_index:end_index] = [' '.join(form_list[start_index:end_index])]
+
+        for i in range(len(form_list)):
+            el = form_list[i]
+            if '(' in el and ')' in el:
+                el = re.sub('\( ', '(', el)
+                el = re.sub(', ', ',', el)
+                el = re.sub(' \)', ')', el)
+                form_list[i] = el
+
+        keywords = {'and', 'or', '(', ')'}
+        c = 0
+        name_to_cond = dict()
+        cond_to_name = dict()
+        for el in form_list:
+            if el not in keywords:
+                c = c + 1
+                name_to_cond[condition + '_condition_' + str(c)] = el
+                cond_to_name[el] = condition + '_condition_' + str(c)
+        form_string = ''
+        for el in form_list:
+            if el in cond_to_name:
+                form_string = form_string + cond_to_name[el] + ' '
+            else:
+                form_string = form_string + el + ' '
+
+        algebra = boolean.BooleanAlgebra()
+        expression = algebra.parse(form_string, simplify=True)
+        return expression, name_to_cond, cond_to_name
+
+    def tree_conditions_to_asp(self, condition: typing.Literal['activation', 'correlation'],
+                               expression, cond_name: str, i, conditions_names,
+                               lp_st=None) -> typing.List[str] | None:
+        if lp_st is None:
+            lp_st = []
+
+        def expression_to_name(expression):
+            if expression.isliteral:
+                condition_name = str(expression)
+            else:
+                condition_name = condition + '_condition_' + ''.join(
+                    [str(symbol).split('_')[2] for symbol in expression.get_symbols()])
+                while condition_name in conditions_names:
+                    condition_name = condition_name + '_'
+                conditions_names.add(condition_name)
+            return condition_name + '({},T)'.format(i)
+
+        def no_params(arg_name):
+            return arg_name.split('(')[0]
+
+        if expression.isliteral:
+            return
+        cond_name = cond_name + '({},T)'.format(i)
+        formula_type = expression.operator
+        formula_args = expression.args
+        if formula_type == '|':
+            for arg in formula_args:
+                arg_name = expression_to_name(arg)
+                lp_st.append('{} :- {}.'.format(cond_name, arg_name))
+                self.tree_conditions_to_asp(condition, arg, no_params(arg_name), i, conditions_names, lp_st)
+        if formula_type == '&':
+            args_name = ''
+            for arg in formula_args:
+                arg_name = expression_to_name(arg)
+            args_name = args_name[:-1]  # remove last comma
+            lp_st.append('{} :- {}.'.format(cond_name, args_name))
+            for arg in formula_args:  # breadth-first (è più costoso della depth ma è più elegante, è la stessa della disgiunzione)
+                arg_name = expression_to_name(arg)
+                self.tree_conditions_to_asp(condition, arg, no_params(arg_name), i, lp_st)
+        return lp_st
+
 
 
 class DeclareParser:
@@ -343,9 +443,9 @@ class DeclareParser:
         # Response[A, B] |A.grade = 3 |B.grade > 5 |1,5,s
         compiler = re.compile(self.CONSTRAINTS_TEMPLATES_PATTERN)
         al = compiler.fullmatch(line)
-        tmp_name = al.group(1).strip()    # template names: Response, Existence...
-        events = al.group(2).strip().split(",")      # A, B
-        events = [e.strip() for e in events]      # [A, B]
+        tmp_name = al.group(1).strip()  # template names: Response, Existence...
+        events = al.group(2).strip().split(",")  # A, B
+        events = [e.strip() for e in events]  # [A, B]
         conditions = al.group(3)  # |A.grade = 3 |B.grade > 5 |1,5,s
         keys = self.model.obj.keys()
         for ev_nm in events:
@@ -396,13 +496,22 @@ class DeclareParser:
         cond_parser_group_reg = "^([\w]+.[\w]+)[ ]*(>|<|=|>=|<=|is[ ]*not|not|is|in)[ ]*([\w]+[.]{0,1}[\w]{0,})$"
         compiler = re.compile(cond_parser_group_reg)
         al = compiler.fullmatch(cond)
-        if len(al.groups()) != 3:
-            raise ValueError(f"Unable to parse {cond1}. Unknown condition")
-
-        p1 = al.group(1).strip()
-        p2 = al.group(2).strip()
-        p3 = al.group(3).strip()
-        return {"obj_attr": p1, "cond": p2, "val": p3}
+        print("condition", cond)
+        # if al is None or len(al.groups()) != 3:
+        #     raise ValueError(f"Unable to parse {cond1}. Unknown condition")
+        dc = DeclareConstraintConditionResolver()
+        i = 0
+        expression, name_to_cond, cond_to_name = dc.parsed_condition("activation", cond)
+        if expression.isliteral:
+            print('activation_condition({},T):- {}({},T).\n'.format(i, str(expression), i))
+        else:
+            conditions = set(name_to_cond.keys())
+            l = dc.tree_conditions_to_asp('activation', expression, 'activation_condition', i, conditions)
+        # p1 = al.group(1).strip()
+        # p2 = al.group(2).strip()
+        # p3 = al.group(3).strip()
+        # return {"obj_attr": p1, "cond": p2, "val": p3}
+        return {"obj_attr": "p1", "cond": "p2", "val": "p3"}
 
     def __is_reserved_keyboard(self, word: str) -> bool:
         ws = DECLARE_RESERVED.words
@@ -412,13 +521,15 @@ class DeclareParser:
 """
 TODO: LP doesn't support float, thus we hav to Scale floating attribute bounds to the lowest integers
 """
+
+
 class DECLARE2LP:
     #  TODO: Convert declare to .lp  using DeclareModel class.
     lp: LPBUILDER
 
     def __init__(self) -> None:
         self.lp = LPBUILDER()
-        
+
     def from_decl(self, model: DeclareModel) -> LPBUILDER:
         keys = model.obj.keys()
         for k in keys:
@@ -478,7 +589,8 @@ class LPBUILDER:
         if val_lp not in self.attributes_values:
             self.attributes_values.append(val_lp)
 
-    def add_template(self, name, ct: ConstraintTemplates, idx: int, props: dict[str, typing.List[DeclareObjectPropertyType]]):
+    def add_template(self, name, ct: ConstraintTemplates, idx: int,
+                     props: dict[str, typing.List[DeclareObjectPropertyType]]):
         self.templates_s.append(f"template({idx},\"{name}\").")
         for conds in ct.events_list:  # A, B   <- depends on the type of template
             conds = conds.strip()
@@ -493,15 +605,67 @@ class LPBUILDER:
                 print(props[nameAttr])
             print(ct.active_cond_parsed)
 
-
             # act_cond = ct.active_cond.strip().replace("")
             # self.templates_s.append(f"activation_condition({idx},T) :- assigned_value({}).")
             self.templates_s.append("\n")
         # ct.
+
+    def parsed_condition(self, condition: typing.Literal['activation', 'correlation'], string: str):
+        string = re.sub('\)', ' ) ', string)
+        string = re.sub('\(', ' ( ', string)
+        string = string.strip()
+        string = re.sub(' +', ' ', string)
+        string = re.sub('is not', 'is_not', string)
+        string = re.sub('not in', 'not_in', string)
+        string = re.sub(' *> *', '>', string)
+        string = re.sub(' *< *', '<', string)
+        string = re.sub(' *= *', '=', string)
+        string = re.sub(' *<= *', '<=', string)
+        string = re.sub(' *>= *', '>=', string)
+        form_list = string.split(" ")
+
+        for i in range(len(form_list) - 1, -1, -1):
+            el = form_list[i]
+            if el == 'in' or el == 'not_in':
+                end_index = form_list[i:].index(')')
+                start_index = i - 1
+                end_index = end_index + i + 1
+                form_list[start_index:end_index] = [' '.join(form_list[start_index:end_index])]
+            elif el == 'is' or el == 'is_not':
+                start_index = i - 1
+                end_index = i + 2
+                form_list[start_index:end_index] = [' '.join(form_list[start_index:end_index])]
+
+        for i in range(len(form_list)):
+            el = form_list[i]
+            if '(' in el and ')' in el:
+                el = re.sub('\( ', '(', el)
+                el = re.sub(', ', ',', el)
+                el = re.sub(' \)', ')', el)
+                form_list[i] = el
+
+        keywords = {'and', 'or', '(', ')'}
+        c = 0
+        name_to_cond = dict()
+        cond_to_name = dict()
+        for el in form_list:
+            if el not in keywords:
+                c = c + 1
+                name_to_cond[condition + '_condition_' + str(c)] = el
+                cond_to_name[el] = condition + '_condition_' + str(c)
+        form_string = ''
+        for el in form_list:
+            if el in cond_to_name:
+                form_string = form_string + cond_to_name[el] + ' '
+            else:
+                form_string = form_string + el + ' '
+
+        algebra = boolean.BooleanAlgebra()
+        expression = algebra.parse(form_string, simplify=True)
+        return expression, name_to_cond, cond_to_name
 
     def __str__(self) -> str:
         line = "\n".join(self.lines)
         line = line + "\n\n" + "\n".join(self.attributes_values)
         line = line + "\n\n" + "\n".join(self.templates_s)
         return line
-

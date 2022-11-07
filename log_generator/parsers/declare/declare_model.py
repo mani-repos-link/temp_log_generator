@@ -79,12 +79,8 @@ class DeclareModel(object):
     templates_dict: dict[str, [ConstraintTemplates]] = {}
 
     def to_str(self) -> str:
-        st = f"""{{ "events":{self.events},"templates":{self.templates_dict} }}"""
+        st = f"""{{ "events":{self.events},"templates": {self.templates_dict}, "attributes": {self.attributes} }}"""
         return st.replace("'", '"')
-
-    def toJson(self):
-        return json.dumps(self, default=lambda o: o.__dict__,
-                          sort_keys=True, indent=4)
 
     def __str__(self):
         j = json.loads(self.to_str())

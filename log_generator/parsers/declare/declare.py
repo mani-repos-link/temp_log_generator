@@ -117,7 +117,7 @@ class DeclareParser:
         elif self.is_events_attrs_value_definition(line):
             self.__parse_attrs_values_definition(line, line_idx)
         elif self.is_constraint_template_definition(line):
-            self.__parse_constraint_template(line, line_idx)
+            self.__parse_constraint_template(line)
         else:
             raise ValueError(f"Unable to parse the line[{line_idx}]")
 
@@ -226,7 +226,7 @@ class DeclareParser:
     def __parse_constraint_template(self, line: str):
         # Response[A, B] |A.grade = 3 |B.grade > 5 |1,5,s
         d = DeclareConstraintResolver()
-        ct = d.resolve(line)
+        ct = d.parse_template(line)
         if ct:
             self.model.templates.append(ct)
             lis = []
@@ -244,6 +244,7 @@ class DeclareParser:
 """
 TODO: LP doesn't support float, thus we hav to Scale floating attribute bounds to the lowest integers
 """
+
 
 class DECLARE2LP:
     #  TODO: Convert declare to .lp  using DeclareModel class.

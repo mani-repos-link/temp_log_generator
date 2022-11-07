@@ -50,9 +50,47 @@
           "B"
         ],
         "conditions": "|A.grade > 2 and A.name in (x, y)  or A.grade < 2 and A.name in (z, v) |B.grade > 5 |1,5,s",
-        "active_cond": "A.grade > 2 and A.name in (x, y)  or A.grade < 2 and A.name in (z, v) ",
-        "correlation_cond": "B.grade > 5 ",
+        "active_cond": "A.grade > 2 and A.name in (x, y)  or A.grade < 2 and A.name in (z, v)",
+        "correlation_cond": "B.grade > 5",
         "time": "1,5,s"
+      }
+    ]
+  },
+  "attributes": {
+    "grade": [
+      {
+        "typ": "integer",
+        "is_range_typ": true,
+        "value": "integer between 1 and 5"
+      },
+      {
+        "typ": "integer",
+        "is_range_typ": true,
+        "value": "integer between 1 and 5"
+      }
+    ],
+    "mark": [
+      {
+        "typ": "integer",
+        "is_range_typ": true,
+        "value": "integer between 1 and 5"
+      },
+      {
+        "typ": "integer",
+        "is_range_typ": true,
+        "value": "integer between 1 and 5"
+      }
+    ],
+    "name": [
+      {
+        "typ": "enumeration",
+        "is_range_typ": false,
+        "value": "x, y, z, v"
+      },
+      {
+        "typ": "enumeration",
+        "is_range_typ": false,
+        "value": "x, y, z, v"
       }
     ]
   }

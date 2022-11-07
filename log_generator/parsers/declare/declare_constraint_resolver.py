@@ -61,6 +61,9 @@ CONSTRAINTS_TEMPLATES = {
 
 class DeclareConstraintConditionResolver:
 
+    def resolve_to_asp(self, ct: ConstraintTemplates):
+        conditions: str = ct.conditions
+
     def parsed_condition(self, condition: typing.Literal['activation', 'correlation'], string: str):
         string = re.sub('\)', ' ) ', string)
         string = re.sub('\(', ' ( ', string)
@@ -163,7 +166,7 @@ class DeclareConstraintResolver:
     def __init__(self):
         self.templates_name = CONSTRAINTS_TEMPLATES.keys()
 
-    def resolve(self, line) -> None | ConstraintTemplates:
+    def parse_template(self, line) -> None | ConstraintTemplates:
         compiler = re.compile(self.CONSTRAINTS_TEMPLATES_PATTERN)
         al = compiler.fullmatch(line)
         if al is None:
@@ -178,10 +181,10 @@ class DeclareConstraintResolver:
         ct.template_name = str(tmp_name)
         ct.events_list = events
         ct.conditions = str(conditions)
-        self.__resolve_constraint_conflicts(conditions, ct)
+        self.__parse_constraint_conditions(conditions, ct)
         return ct
 
-    def __resolve_constraint_conflicts(self, conditions_part: str, ct_model: ConstraintTemplates):
+    def __parse_constraint_conditions(self, conditions_part: str, ct_model: ConstraintTemplates):
         conds_list = conditions_part.strip().strip("|").split("|")
         conds_len = len(conds_list)
         if conds_len == 1:

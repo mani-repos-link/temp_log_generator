@@ -2,7 +2,8 @@ import sys
 import boolean
 import re
 
-decl_model = sys.argv[1]  # 'Models/reference10.decl'
+# decl_model = sys.argv[1]  # 'Models/reference10.decl'
+decl_model = 'files/Response3.decl'
 
 ##### Import Declare Model
 
@@ -158,7 +159,7 @@ def tree_conditions_to_asp(condition, expression, condition_name, i, file, condi
 
 def condition_to_asp(name, cond, i, file):
     name = name + '({},T)'.format(i)
-    print(attrib_to_val)
+    print("--name--", name, "--cond--", cond, i)
     for attrib in attrib_to_val:
         if attrib in cond:
             attrib_type = attrib_to_val[attrib][0]

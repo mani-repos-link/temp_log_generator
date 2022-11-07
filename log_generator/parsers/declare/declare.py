@@ -276,7 +276,7 @@ class DECLARE2LP:
 class LP_BUILDER:
     lines: typing.List[str] = []
     attributes_values: typing.List[str] = []
-    templates_s: typing.List[str] = []
+    templates_s: [str] = []
 
     def define_predicate(self, name: str, predicate_name: str):
         self.lines.append(f'{predicate_name}({name}).')
@@ -312,10 +312,12 @@ class LP_BUILDER:
             self.attributes_values.append(val_lp)
 
     def add_template(self, name, ct: ConstraintTemplates, idx: int,
-                     props: dict[str, typing.List[DeclareEventAttributeType]]):
+                     props: dict[str, [DeclareEventAttributeType]]):
         self.templates_s.append(f"template({idx},\"{name}\").")
         dc = DeclareConstraintConditionResolver()
-        dc.resolve_to_asp(ct)
+        ls = dc.resolve_to_asp(ct, props, idx)
+        if ls and len(ls) > 0:
+            self.templates_s = self.templates_s + ls
         # i = 0
         # expression, name_to_cond, cond_to_name = dc.parsed_condition("activation", cond)
         # if expression.isliteral:

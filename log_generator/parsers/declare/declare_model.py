@@ -11,8 +11,6 @@ class ConstraintTemplates:
     events_list: [str]
     conditions: str
     active_cond: str
-    # active_cond_parsed: typing.Dict[str, str]
-    # correlation_cond_parsed: typing.Dict[str, str]
     correlation_cond: str
     ts: str
 

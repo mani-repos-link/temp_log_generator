@@ -5,6 +5,7 @@ import typing
 import boolean
 
 from parsers.declare.declare_model import ConstraintTemplates
+from parsers.declare.declare_model import DeclareEventValueType
 
 # class ConstrainTemplates:
 CONSTRAINTS_TEMPLATES = {
@@ -61,13 +62,74 @@ CONSTRAINTS_TEMPLATES = {
 
 class DeclareConstraintConditionResolver:
 
-    def resolve_to_asp(self, ct: ConstraintTemplates):
-        condition_line: str = ct.conditions
-        print(ct.active_cond)
+    def resolve_to_asp(self, ct: ConstraintTemplates, attrs: dict, idx: int = 0):
+        ls = []
         if ct.active_cond:
+            ls.append('activation({},{}).'.format(idx, ct.events_list[0]))
             exp, n2c, c2n = self.parsed_condition('activation', ct.active_cond)
-            s = self.tree_conditions_to_asp("activation", exp, "activation_condition", 0, set(n2c.keys()))
-            print(s)
+            conditions = set(n2c.keys())
+            if exp.isliteral:
+                ls.append('activation_condition({},T):- {}({},T).'.format(idx, str(exp), idx))
+            s = self.tree_conditions_to_asp("activation", exp, "activation_condition", idx, conditions)
+            if s and len(s) > 0:
+                ls = ls + s
+            for n, c in n2c.items():
+                s = self.condition_to_asp(n, c, idx, attrs)
+                if s and len(s) > 0:
+                    ls = ls + s
+        if ct.correlation_cond:
+            ls.append("")
+            target = ct.events_list[1]
+            ls.append('target({},{}).'.format(idx, target))
+            exp, n2c, c2n = self.parsed_condition('correlation', ct.active_cond)
+            conditions = set(n2c.keys())
+            if exp.isliteral:
+                ls.append('correlation_condition({},T):- {}({},T).'.format(idx, str(exp), idx))
+            s = self.tree_conditions_to_asp("correlation", exp, "correlation_condition", idx, conditions)
+            if s and len(s) > 0:
+                ls = ls + s
+            for n, c in n2c.items():
+                s = self.condition_to_asp(n, c, idx, attrs)
+                if s and len(s) > 0:
+                    ls = ls + s
+        return ls
+
+    def condition_to_asp(self, name, cond, i, attrs):
+        name = name + '({},T)'.format(i)
+        string = re.sub('is not', 'is_not', cond)
+        string = re.sub('not in', 'not_in', string)
+        attr = cond.split(".")[1].strip()  # A.grade>2
+        attr = re.search('[\w]+', attr)
+        ls = []
+        if attr:
+            attr = attr.group(0).strip()
+            attr_obj = attrs[attr][0]
+            if attr_obj.typ == DeclareEventValueType.ENUMERATION:  # ["is_range_typ"]:  # Enumeration
+                cond_type = cond.split(' ')[1]
+                if cond_type == 'is':
+                    s = 'assigned_value({},{},T)'.format(attr, string.split(' ')[2])
+                    ls.append('{} :- {}.'.format(name, s))
+                elif cond_type == 'is_not':
+                    s = 'time(T), not assigned_value({},{},T)'.format(attr, string.split(' ')[2])
+                    ls.append('{} :- {}.'.format(name, s))
+                elif cond_type == 'in':
+                    for value in string.split(' ')[2][1:-1].split(','):
+                        asp_cond = 'assigned_value({},{},T)'.format(attr, value)
+                        ls.append('{} :- {}.'.format(name, asp_cond))
+                else:
+                    asp_cond = 'time(T),'
+                    for value in cond.split(' ')[2][1:-1].split(','):
+                        asp_cond = asp_cond + 'not assigned_value({},{},T),'.format(attr, value)
+                    asp_cond = asp_cond[:-1]
+                    ls.append('{} :- {}.'.format(name, asp_cond))
+            elif attr_obj.typ == DeclareEventValueType.INTEGER:
+                relations = ['<=', '>=', '=', '<', '>']
+                for rel in relations:
+                    if rel in cond:
+                        value = string.split(rel)[1]
+                        ls.append('{} :- assigned_value({},V,T),V{}{}.'.format(name, attr, rel, value))
+                        break
+        return ls
 
     def parsed_condition(self, condition: typing.Literal['activation', 'correlation'], string: str):
         string = re.sub('\)', ' ) ', string)
@@ -128,7 +190,6 @@ class DeclareConstraintConditionResolver:
                                lp_st=None) -> typing.List[str] | None:
         if lp_st is None:
             lp_st = []
-
         def expression_to_name(expression):
             if expression.isliteral:
                 condition_name = str(expression)

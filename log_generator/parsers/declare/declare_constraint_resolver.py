@@ -4,7 +4,7 @@ import re
 import typing
 import boolean
 
-from log_generator.parsers.declare.declare_model import ConstraintTemplates
+from parsers.declare.declare_model import ConstraintTemplates
 
 # class ConstrainTemplates:
 CONSTRAINTS_TEMPLATES = {
@@ -62,7 +62,12 @@ CONSTRAINTS_TEMPLATES = {
 class DeclareConstraintConditionResolver:
 
     def resolve_to_asp(self, ct: ConstraintTemplates):
-        conditions: str = ct.conditions
+        condition_line: str = ct.conditions
+        print(ct.active_cond)
+        if ct.active_cond:
+            exp, n2c, c2n = self.parsed_condition('activation', ct.active_cond)
+            s = self.tree_conditions_to_asp("activation", exp, "activation_condition", 0, set(n2c.keys()))
+            print(s)
 
     def parsed_condition(self, condition: typing.Literal['activation', 'correlation'], string: str):
         string = re.sub('\)', ' ) ', string)

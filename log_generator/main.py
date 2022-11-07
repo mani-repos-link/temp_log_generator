@@ -15,7 +15,7 @@ with open("../files/Response.decl") as file:
     # print(json.dumps(dm, indent=4))
     lp = DECLARE2LP()
     s = lp.from_decl(dm)
-    print(s)
+    # print(s)
 
 # with open("ad.json", "w+") as f:
 #     json.dump(dm.__dict__(), f)

@@ -7,11 +7,11 @@ from json import JSONEncoder
 import re
 import boolean
 
-from log_generator.parsers.declare.declare_model import DeclareEventAttributeType
-from log_generator.parsers.declare.declare_model import DeclareEventValueType
-from log_generator.parsers.declare.declare_model import DeclareModel
-from log_generator.parsers.declare.declare_model import ConstraintTemplates
-from log_generator.parsers.declare.declare_constraint_resolver import DeclareConstraintConditionResolver, \
+from parsers.declare.declare_model import DeclareEventAttributeType
+from parsers.declare.declare_model import DeclareEventValueType
+from parsers.declare.declare_model import DeclareModel
+from parsers.declare.declare_model import ConstraintTemplates
+from parsers.declare.declare_constraint_resolver import DeclareConstraintConditionResolver, \
     DeclareConstraintResolver
 
 """
@@ -314,21 +314,15 @@ class LP_BUILDER:
     def add_template(self, name, ct: ConstraintTemplates, idx: int,
                      props: dict[str, typing.List[DeclareEventAttributeType]]):
         self.templates_s.append(f"template({idx},\"{name}\").")
-        for conds in ct.events_list:  # A, B   <- depends on the type of template
-            conds = conds.strip()
-            self.templates_s.append(f"activation({idx},{conds}).")
-            if ct.active_cond_parsed:
-                nameAttr = ct.active_cond_parsed["obj_attr"].split(".")[-1]
-                if nameAttr not in props:
-                    raise ValueError(f"{nameAttr} not defined in any events")
-                dopt = props[nameAttr]
-                if dopt[0].typ == DeclareEventValueType.ENUMERATION:
-                    pass
-                print(props[nameAttr])
-            print(ct.active_cond_parsed)
-            # act_cond = ct.active_cond.strip().replace("")
-            # self.templates_s.append(f"activation_condition({idx},T) :- assigned_value({}).")
-            self.templates_s.append("\n")
+        dc = DeclareConstraintConditionResolver()
+        dc.resolve_to_asp(ct)
+        # i = 0
+        # expression, name_to_cond, cond_to_name = dc.parsed_condition("activation", cond)
+        # if expression.isliteral:
+        #     print('activation_condition({},T):- {}({},T).\n'.format(i, str(expression), i))
+        # else:
+        #     conditions = set(name_to_cond.keys())
+        #     l = dc.tree_conditions_to_asp('activation', expression, 'activation_condition', i, conditions)
 
     def __str__(self) -> str:
         line = "\n".join(self.lines)

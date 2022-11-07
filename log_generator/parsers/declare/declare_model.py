@@ -17,14 +17,17 @@ class ConstraintTemplates:
     ts: str
 
     def __dict__(self):
-        return str({"template_name": self.template_name})
+        return str({
+            "template_name": self.template_name, "events_list": self.events_list, "conditions": self.conditions,
+            "active_cond": self.active_cond,  "correlation_cond": self.correlation_cond,  "time": self.ts
+        })
 
     def __repr__(self):
         return self.__dict__()
 
     def __str__(self):
-        return f"{{\"name\": {self.template_name}, \"events\": {self.events_list}, \"conditions\": {self.conditions}, " \
-               f"\"active_cond\": {self.active_cond}, \"correlation_cond\": {self.correlation_cond}, \"ts\": {self.ts} }}"
+        return f"{{\"name\": {self.template_name}, \"param\": {self.events_list}, \"conditions\": \"{self.conditions}\", " \
+               f"\"active_cond\": \"{self.active_cond}\", \"correlation_cond\": \"{self.correlation_cond}\", \"ts\": \"{self.ts}\" }}"
 
 
 class DeclareEventValueType(str, Enum):
@@ -69,29 +72,28 @@ class DeclareEventAttributeType(object):
         # return self.__str__()
 
 
-class DeclareModel():
+class DeclareModel(object):
     events: dict[str, dict[str, dict[str, DeclareEventAttributeType] | str]] = {}
     attributes: dict[str, [DeclareEventAttributeType]] = {}
     templates: [ConstraintTemplates] = []
     templates_dict: dict[str, [ConstraintTemplates]] = {}
 
-    def __init__(self):
-        super().__init__()
-        print("Object init!")
+    def to_str(self) -> str:
+        st = f"""{{ "events":{self.events},"templates":{self.templates_dict} }}"""
+        return st.replace("'", '"')
 
     def toJson(self):
         return json.dumps(self, default=lambda o: o.__dict__,
                           sort_keys=True, indent=4)
 
     def __str__(self):
-        st = f"""{{ "events":{self.events},"templates":{self.templates_dict} }}"""
-        st = st.replace("'", '"')
-        # print(json.dumps(self.templates_dict, default=lambda o: o.__dict__ if isinstance(o, dict) else print("ooo", o)))
-        print(json.dumps(self.templates_dict, default=lambda o: o.__dict__))
-        # j = json.loads(st)
-        # print(j)
-        return st
-    # def __repr__(self):
-    #     return self.__str__()
-        # return self.__str__()
+        j = json.loads(self.to_str())
+        return json.dumps(j, indent=4)
+
+    def __repr__(self):
+        j = json.loads(self.to_str())
+        return json.dumps(j, indent=4)
+
+    def __dict__(self):
+        return json.loads(self.to_str())
 

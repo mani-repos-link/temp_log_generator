@@ -10,28 +10,20 @@ from log_generator.parsers.declare.declare_model import ConstraintTemplates
 CONSTRAINTS_TEMPLATES = {
 
     "Init": {
-        "binary": False,
-        "negative": False,
-        "cardinality": False,
+        "binary": False, "negative": False, "cardinality": False,
         "semantic": "First task is A"
     },
 
     "Existence": {
-        "binary": False,
-        "negative": False,
-        "cardinality": True,
+        "binary": False, "negative": False, "cardinality": True,
         "semantic": "Task A should be executed. If cardinality defined, should be executed n or more times."
     },
     "Absence": {
-        "binary": False,
-        "negative": False,
-        "cardinality": True,
+        "binary": False, "negative": False, "cardinality": True,
         "semantic": "Task A should not be executed. If cardinality defined, should be executed n times or less"
     },
     "Exactly": {
-        "binary": False,
-        "negative": False,
-        "cardinality": True,
+        "binary": False, "negative": False, "cardinality": True,
         "semantic": "Task A should be executed (exactly) N times"
     },
 
@@ -193,14 +185,14 @@ class DeclareConstraintResolver:
         conds_list = conditions_part.strip().strip("|").split("|")
         conds_len = len(conds_list)
         if conds_len == 1:
-            ct_model.active_cond = conds_list[0]
+            ct_model.active_cond = conds_list[0].strip()
         elif conds_len == 2:
-            ct_model.active_cond = conds_list[0]
-            ct_model.correlation_cond = conds_list[1]
+            ct_model.active_cond = conds_list[0].strip()
+            ct_model.correlation_cond = conds_list[1].strip()
         elif conds_len == 3:
-            ct_model.active_cond = conds_list[0]
-            ct_model.correlation_cond = conds_list[1]
-            ct_model.ts = conds_list[2]
+            ct_model.active_cond = conds_list[0].strip()
+            ct_model.correlation_cond = conds_list[1].strip()
+            ct_model.ts = conds_list[2].strip()
         else:  # TODO: what to in this case
             raise ValueError(f"Unable to parse the line due to the exceeds conditions (> 3)")
         return ct_model

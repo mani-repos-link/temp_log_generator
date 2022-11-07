@@ -223,7 +223,7 @@ class DeclareParser:
                 raise ValueError(f"""Unable to parse {value}""")
         return dopt
 
-    def __parse_constraint_template(self, line: str, line_idx: int):
+    def __parse_constraint_template(self, line: str):
         # Response[A, B] |A.grade = 3 |B.grade > 5 |1,5,s
         d = DeclareConstraintResolver()
         ct = d.resolve(line)
@@ -236,29 +236,6 @@ class DeclareParser:
                 self.model.templates_dict[ct.template_name] = lis
             lis.append(ct)
 
-    def __parse_constraints_cond(self, cond1: str) -> dict[str, str]:
-        cond = cond1.strip()
-        cond = ' '.join(cond.split())
-        cond_parser_group_reg = "^([\w]+.[\w]+)[ ]*(>|<|=|>=|<=|is[ ]*not|not|is|in)[ ]*([\w]+[.]{0,1}[\w]{0,})$"
-        compiler = re.compile(cond_parser_group_reg)
-        al = compiler.fullmatch(cond)
-        print("condition", cond)
-        # if al is None or len(al.groups()) != 3:
-        #     raise ValueError(f"Unable to parse {cond1}. Unknown condition")
-        dc = DeclareConstraintConditionResolver()
-        i = 0
-        expression, name_to_cond, cond_to_name = dc.parsed_condition("activation", cond)
-        if expression.isliteral:
-            print('activation_condition({},T):- {}({},T).\n'.format(i, str(expression), i))
-        else:
-            conditions = set(name_to_cond.keys())
-            l = dc.tree_conditions_to_asp('activation', expression, 'activation_condition', i, conditions)
-        # p1 = al.group(1).strip()
-        # p2 = al.group(2).strip()
-        # p3 = al.group(3).strip()
-        # return {"obj_attr": p1, "cond": p2, "val": p3}
-        return {"obj_attr": "p1", "cond": "p2", "val": "p3"}
-
     def __is_reserved_keyboard(self, word: str) -> bool:
         ws = DECLARE_RESERVED.words
         return word in ws
@@ -267,7 +244,6 @@ class DeclareParser:
 """
 TODO: LP doesn't support float, thus we hav to Scale floating attribute bounds to the lowest integers
 """
-
 
 class DECLARE2LP:
     #  TODO: Convert declare to .lp  using DeclareModel class.
@@ -287,7 +263,6 @@ class DECLARE2LP:
                 self.lp.define_predicate_attr(k, attr)
                 dopt: DeclareEventAttributeType = props[attr]
                 self.lp.set_attr_value(attr, dopt)
-
         templates_idx = 0
         # for tmp_name in model.templates_dict.keys():
         for ct in model.templates:
@@ -350,65 +325,9 @@ class LP_BUILDER:
                     pass
                 print(props[nameAttr])
             print(ct.active_cond_parsed)
-
             # act_cond = ct.active_cond.strip().replace("")
             # self.templates_s.append(f"activation_condition({idx},T) :- assigned_value({}).")
             self.templates_s.append("\n")
-        # ct.
-
-    def parsed_condition(self, condition: typing.Literal['activation', 'correlation'], string: str):
-        string = re.sub('\)', ' ) ', string)
-        string = re.sub('\(', ' ( ', string)
-        string = string.strip()
-        string = re.sub(' +', ' ', string)
-        string = re.sub('is not', 'is_not', string)
-        string = re.sub('not in', 'not_in', string)
-        string = re.sub(' *> *', '>', string)
-        string = re.sub(' *< *', '<', string)
-        string = re.sub(' *= *', '=', string)
-        string = re.sub(' *<= *', '<=', string)
-        string = re.sub(' *>= *', '>=', string)
-        form_list = string.split(" ")
-
-        for i in range(len(form_list) - 1, -1, -1):
-            el = form_list[i]
-            if el == 'in' or el == 'not_in':
-                end_index = form_list[i:].index(')')
-                start_index = i - 1
-                end_index = end_index + i + 1
-                form_list[start_index:end_index] = [' '.join(form_list[start_index:end_index])]
-            elif el == 'is' or el == 'is_not':
-                start_index = i - 1
-                end_index = i + 2
-                form_list[start_index:end_index] = [' '.join(form_list[start_index:end_index])]
-
-        for i in range(len(form_list)):
-            el = form_list[i]
-            if '(' in el and ')' in el:
-                el = re.sub('\( ', '(', el)
-                el = re.sub(', ', ',', el)
-                el = re.sub(' \)', ')', el)
-                form_list[i] = el
-
-        keywords = {'and', 'or', '(', ')'}
-        c = 0
-        name_to_cond = dict()
-        cond_to_name = dict()
-        for el in form_list:
-            if el not in keywords:
-                c = c + 1
-                name_to_cond[condition + '_condition_' + str(c)] = el
-                cond_to_name[el] = condition + '_condition_' + str(c)
-        form_string = ''
-        for el in form_list:
-            if el in cond_to_name:
-                form_string = form_string + cond_to_name[el] + ' '
-            else:
-                form_string = form_string + el + ' '
-
-        algebra = boolean.BooleanAlgebra()
-        expression = algebra.parse(form_string, simplify=True)
-        return expression, name_to_cond, cond_to_name
 
     def __str__(self) -> str:
         line = "\n".join(self.lines)

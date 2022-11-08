@@ -9,10 +9,10 @@ from enum import Enum
 class ConstraintTemplates:
     template_name: str
     events_list: [str]
-    conditions: str
-    active_cond: str
-    correlation_cond: str
-    ts: str
+    conditions: str = None
+    active_cond: str = None
+    correlation_cond: str = None
+    ts: str | None = None
 
     def __dict__(self):
         return str({
@@ -25,7 +25,7 @@ class ConstraintTemplates:
 
     def __str__(self):
         return f"{{\"name\": {self.template_name}, \"param\": {self.events_list}, \"conditions\": \"{self.conditions}\", " \
-               f"\"active_cond\": \"{self.active_cond}\", \"correlation_cond\": \"{self.correlation_cond}\", \"ts\": \"{self.ts}\" }}"
+               f"\"active_cond\": \"{self.active_cond}\", \"correlation_cond\": \"{self.correlation_cond}\", \"ts\": \"{self.ts}\" }} "
 
 
 class DeclareEventValueType(str, Enum):

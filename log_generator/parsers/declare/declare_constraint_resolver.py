@@ -65,7 +65,7 @@ class DeclareConstraintConditionResolver:
     def resolve_to_asp(self, ct: ConstraintTemplates, attrs: dict, idx: int = 0):
         ls = []
         if ct.active_cond:
-            ls.append('activation({},{}).'.format(idx, ct.events_list[0]))
+            ls.append('activation({},{}).'.format(idx, ct.events_list[0].lower()))
             exp, n2c, c2n = self.parsed_condition('activation', ct.active_cond)
             conditions = set(n2c.keys())
             if exp.isliteral:
@@ -80,7 +80,7 @@ class DeclareConstraintConditionResolver:
         if ct.correlation_cond:
             ls.append("")
             target = ct.events_list[1]
-            ls.append('target({},{}).'.format(idx, target))
+            ls.append('target({},{}).'.format(idx, target.lower()))
             exp, n2c, c2n = self.parsed_condition('correlation', ct.correlation_cond)
             conditions = set(n2c.keys())
             if exp.isliteral:
@@ -240,7 +240,7 @@ class DeclareConstraintResolver:
         al = compiler.fullmatch(line)
         if al is None:
             return
-        tmp_name = al.group(1).strip()  # template names: Response, Existence...
+        tmp_name = al.group(1).replace(" ", "").strip()  # template names: Response, Existence...
         if tmp_name not in self.templates_name:
             raise ValueError(f"Constraint template {tmp_name} is not supported!")
         events = al.group(2).strip().split(",")  # A, B

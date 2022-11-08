@@ -25,7 +25,8 @@ class ExampleApp:
 
     def handle_output2(self, output: clingo.solving.Model):
         for x in output.context.symbolic_atoms:
-            print(x)
+            # print(x)
+            pass
     #   TODO: pm4py
 
     def run(self):
@@ -36,6 +37,7 @@ class ExampleApp:
         ctl.ground([("base", [])], context=self)
         # out: Union[SolveHandle, SolveResult] = ctl.solve(on_model=self.handle_output)
         im: Union[SolveHandle, SolveResult] = ctl.solve(on_model=self.handle_output2)
+        print(json.dumps(ctl.statistics, indent=4))
         # print(im)
         # im: Union[SolveHandle, SolveResult] = ctl.solve(on_model=self.handle_output)
         # print(im)

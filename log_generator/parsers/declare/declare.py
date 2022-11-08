@@ -152,7 +152,7 @@ class DeclareParser:
             raise NameError(f"""Type of object defined(`{event_type}`) is already reserved.""")
         self.model.events[event_name] = {"object_type": event_type}
 
-    def __parse_attributes_definition(self, line: str, line_idx: int):
+    def __parse_attributes_definition(self, line: str, line_idx: int, strict=False):
         arr = line.replace('bind', '').strip().split(':', maxsplit=1)  # LINE: bind B: grade, mark, name
         event_name = arr[0].strip()  # B
         propsOrAttrs = arr[1].strip().split(',')  # grade, mark, name
@@ -164,7 +164,7 @@ class DeclareParser:
         props = obj["props"]
         for p in propsOrAttrs:
             p = p.strip()
-            if self.__is_reserved_keyboard(p):
+            if strict and self.__is_reserved_keyboard(p):
                 raise NameError(f"""Type of object property defined(`{p}`) is already reserved.""")
             props[p] = DeclareEventAttributeType()
             if p in self.model.attributes:
@@ -179,7 +179,7 @@ class DeclareParser:
             raise ValueError(f"Failed to parse in line {line_idx}: {line}")
         props = arr[0].strip().split(",")
         value = arr[1].strip()
-        dopt = self.__parse_attr_value(value)
+        dopt = self.__parse_attr_value(value, line_idx)
         for p in props:
             p = p.strip()
             if p not in self.model.attributes:
@@ -192,11 +192,11 @@ class DeclareParser:
                     pr.is_range_typ = dopt.is_range_typ
                     pr.value = dopt.value
 
-    def __parse_attr_value(self, value: str) -> DeclareEventAttributeType:
+    def __parse_attr_value(self, value: str, idx: int) -> DeclareEventAttributeType:
         # value: integer between 1 and 5     #  <--- integer
         # value: float between 1 and 5       #  <--- float
         # value: x, y, z, v                  #  <--- enumeration
-        integer_range_rx = "^integer[ ]+between[ ]+[+-]?\d+[ ]+and[ ]+[+-]?\d$"
+        integer_range_rx = "^integer[ ]+between[ ]+[+-]?\d+[ ]+and[ ]+[+-]?\d+$"
         float_range_rx = "^float[ ]+between[ ]+[+-]?\d+(\.\d+)?[ ]+and[ ]+[+-]?\d+(\.\d+)?$"
         enume_rx = "^[\w]+(,[ ]*[\w.]+)*$"  # matches -> [xyz, xyz, dfs], [12,45,78.54,454]
         value = value.strip()
@@ -220,7 +220,7 @@ class DeclareParser:
                 dopt.typ = DeclareEventValueType.FLOAT
                 dopt.is_range_typ = False
             else:
-                raise ValueError(f"""Unable to parse {value}""")
+                raise ValueError(f"""Unable to parse {value} in line {idx}""")
         return dopt
 
     def __parse_constraint_template(self, line: str):

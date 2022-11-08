@@ -81,7 +81,7 @@ class DeclareConstraintConditionResolver:
             ls.append("")
             target = ct.events_list[1]
             ls.append('target({},{}).'.format(idx, target))
-            exp, n2c, c2n = self.parsed_condition('correlation', ct.active_cond)
+            exp, n2c, c2n = self.parsed_condition('correlation', ct.correlation_cond)
             conditions = set(n2c.keys())
             if exp.isliteral:
                 ls.append('correlation_condition({},T):- {}({},T).'.format(idx, str(exp), idx))
@@ -196,6 +196,9 @@ class DeclareConstraintConditionResolver:
             else:
                 condition_name = condition + '_condition_' + ''.join(
                     [str(symbol).split('_')[2] for symbol in expression.get_symbols()])
+                # for symbol in expression.get_symbols():
+                #     print(symbol)
+                # print("condition_name", condition_name, expression)
                 while condition_name in conditions_names:
                     condition_name = condition_name + '_'
                 conditions_names.add(condition_name)

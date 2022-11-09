@@ -1,8 +1,8 @@
 # from parsers.declare import DECLARE2LP, DeclareParser
-from log_generator.ASP_generator import ASP_generator
-from log_generator.alp import DECLARE2LP
-from parsers.declare.declare import DeclareParser
-import json
+from ASP_generator import ASP_generator
+# from log_generator.alp import DECLARE2LP
+# from parsers.declare.declare import DeclareParser
+# import json
 
 # with open("../files/reference10.decl") as file:
 
@@ -21,8 +21,10 @@ import json
 # with open("ad.json", "w+") as f:
 #     json.dump(dm.__dict__(), f)
 
-asp = ASP_generator(45, 2, 6,
-                    "../files/Response3.decl", "../files/templates.lp",
+asp = ASP_generator(4, 2, 6,
+                    # "../files/Response.decl",
+                    "../files/Response3.decl",
+                    "../files/templates.lp",
                     "../files/generation_encoding.lp")
 
 asp.run()

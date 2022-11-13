@@ -6,8 +6,8 @@ TODO: LP doesn't support float, thus we hav to Scale floating attribute bounds t
 import typing
 from typing import Dict
 
-from log_generator.parsers.declare.declare_constraint_resolver import DeclareConstraintConditionResolver
-from log_generator.parsers.declare.declare_model import DeclareEventAttributeType, DeclareEventValueType, \
+from parsers.declare.declare_constraint_resolver import DeclareConstraintConditionResolver
+from parsers.declare.declare_model import DeclareEventAttributeType, DeclareEventValueType, \
     ConstraintTemplates, DeclareModel
 
 

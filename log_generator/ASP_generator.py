@@ -1,14 +1,12 @@
+from datetime import datetime
+
+import clingo
 from clingo import SymbolType
+import pm4py
+from pm4py.objects.log import obj as lg
+import pandas as pd
 
 from abstracts.log_generator import Log_generator
-import tempfile
-import clingo
-# import pm4py
-from pm4py.objects.log import obj as lg
-from pm4py.objects.log import exporter
-
-from datetime import datetime, timedelta
-
 from alp import DECLARE2LP
 from parsers.declare.declare import DeclareParser
 
@@ -22,7 +20,7 @@ class ASP_generator(Log_generator):
         self.decl_model_path = decl_model_path
         self.template_path = template_path
         self.encoding_path = encoding_path
-        self.trace_xes = lg.Trace()
+        self.trace_xes: [lg.Trace] = []
 
     def __decl_model_to_lp_file(self):
         with open(self.decl_model_path, "r") as file:
@@ -54,9 +52,8 @@ class ASP_generator(Log_generator):
         traced = {}
         for m in result:  # create dict
             trace_name = str(m.name)
-            l = []
             arg_len = len(m.arguments)
-            i = 0
+            l, i = ([], 0)
             for arg in m.arguments:  # resources
                 i = i + 1
                 if arg.type == SymbolType.Function:
@@ -68,27 +65,24 @@ class ASP_generator(Log_generator):
                         if num not in traced:
                             traced[num] = {}
                         traced[num][trace_name] = l
+
         print(traced)
+        lines = []
+        for trace_id in range(len(traced)):
+            line = {'case_id': trace_id}
+            for i in traced:
+                trace = traced[i]
+                event_name = trace["trace"][0]
+                line['case:concept:name'] = event_name
+                e = {i: trace[i] for i in trace if i != 'trace'}  # filter trace by removing trace key
+                for i in e:  # e = {'assigned_value': ['grade', '5', '1']}
+                    line['concept:name'] = e[i][0]
+                    line["time:timestamp"] = datetime.now().timestamp()  # + timedelta(hours=c).datetime
+            lines.append(line)
 
-        for i in traced:
-            trace = traced[i]
-            self.trace_xes.attributes["concept:name"] = trace["trace"][0]
-            e = {i: trace[i] for i in trace if i != 'trace'}  # filter trace by removing trace key
-            c = 0
-            for i in e:  # e = {'assigned_value': ['grade', '5', '1']}
-                event = lg.Event()
-                event["concept:name"] = trace[i]
-                event["time:timestamp"] = datetime.now().timestamp()  # + timedelta(hours=c).datetime
-                self.trace_xes.append(event)
-                c = c + 1
+        dt = pd.DataFrame(lines)
+        dt = pm4py.format_dataframe(dt, case_id='case_id', activity_key='concept:name',
+                                           timestamp_key='time:timestamp')
+        logger = pm4py.convert_to_event_log(dt)
+        pm4py.write_xes(logger, 'logy.xes')
 
-                #     trace_xes.append(event)
-
-        # d = exporter.xes.exporter.log_conversion.to_data_frame(self.trace_xes)
-        print(self.trace_xes)
-        # print(m[0].type, m[0]._rep, m[0].name, m[0].arguments, m[0].negative, m[0].number, m[0].positive)
-        # print(m[0].string, m[0].type, m[0]._rep, m[0].name, m[0].arguments, m[0].negative, m[0].number, m[0].positive)
-
-        # for c in output.context.symbolic_atoms:
-        # print(c.symbol, "\t\t", c.is_external, "\t\t", c.is_fact, "\t\t", c.literal, "\t", c.__str__())
-        # df = pm4py.format_dataframe()

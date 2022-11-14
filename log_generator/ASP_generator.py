@@ -4,6 +4,7 @@ import clingo
 from clingo import SymbolType
 import pm4py
 from pm4py.objects.log import obj as lg
+from pm4py.objects.log.exporter.xes import exporter
 import pandas as pd
 
 from abstracts.log_generator import Log_generator
@@ -38,13 +39,10 @@ class ASP_generator(Log_generator):
         ctl = clingo.Control([f"-c t={self.num_traces}", "1"])  # TODO: add parameters
         ctl.load(self.encoding_path)
         ctl.load(self.template_path)
-        # ctl.load("generation_instance.lp")
         ctl.load(decl2lp_file)
         ctl.ground([("base", [])], context=self)
         out = ctl.solve(on_model=self.__handle_clingo_result)
         print(out)
-        # print(ctl.statistics)
-        # im: Union[SolveHandle, SolveResult] = ctl.solve(on_model=self.handle_output2)
 
     def __handle_clingo_result(self, output: clingo.solving.Model):
         result = output.symbols(shown=True)
@@ -65,8 +63,36 @@ class ASP_generator(Log_generator):
                         if num not in traced:
                             traced[num] = {}
                         traced[num][trace_name] = l
-
+        self.to_xes_with_dataframe(traced, "generated_dataframe.xes")
+        self.to_xes(traced, "generated_exporter.xes")
         print(traced)
+
+    def to_xes(self, traced, output_fn: str):
+        e_log = lg.EventLog()
+        e_log.extensions["concept"] = {}
+        e_log.extensions["concept"]["name"] = lg.XESExtension.Concept.name
+        e_log.extensions["concept"]["prefix"] = lg.XESExtension.Concept.prefix
+        e_log.extensions["concept"]["uri"] = lg.XESExtension.Concept.uri
+
+        for trace_id in range(len(traced)):
+            trace_gen = lg.Trace()
+            trace_gen.attributes["concept:name"] = f"trace_{trace_id}"
+            for i in traced:
+                trace = traced[i]
+                event_name = trace["trace"][0]
+                e = {i: trace[i] for i in trace if i != 'trace'}  # filter trace by removing trace key
+                for i in e:  # e = {'assigned_value': ['grade', '5', '1']}
+                    event = lg.Event()
+                    event["concept:name"] = event_name
+                    event[e[i][0]] = e[i][1]
+                    event["time:timestamp"] = datetime.now().timestamp()  # + timedelta(hours=c).datetime
+                    trace_gen.append(event)
+            self.trace_xes.append(trace_gen)
+            e_log.append(trace_gen)
+
+        exporter.apply(e_log, output_fn)
+
+    def to_xes_with_dataframe(self, traced, output_filename: str):
         lines = []
         for trace_id in range(len(traced)):
             line = {'case_id': trace_id}
@@ -79,10 +105,8 @@ class ASP_generator(Log_generator):
                     line['concept:name'] = e[i][0]
                     line["time:timestamp"] = datetime.now().timestamp()  # + timedelta(hours=c).datetime
             lines.append(line)
-
         dt = pd.DataFrame(lines)
         dt = pm4py.format_dataframe(dt, case_id='case_id', activity_key='concept:name',
-                                           timestamp_key='time:timestamp')
+                                    timestamp_key='time:timestamp')
         logger = pm4py.convert_to_event_log(dt)
-        pm4py.write_xes(logger, 'logy.xes')
-
+        pm4py.write_xes(logger, output_filename)

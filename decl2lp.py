@@ -3,7 +3,7 @@ import boolean
 import re
 
 # decl_model = sys.argv[1]  # 'Models/reference10.decl'
-decl_model = 'files/Response.decl'
+decl_model = sys.argv[1]  # 'Models/reference10.decl'
 
 ##### Import Declare Model
 
@@ -56,7 +56,8 @@ with open(decl_model) as file:
             elif len(activities) == 2:
                 activation_cond = line[1]  # NOTAAAA: qui assumiamo che la signature è del tipo Template[A,B]
                 mp_constraint.append((activities[0], activation_cond))
-                correlation_cond = line[2]  # Se la signature fosse di tipo Template[B,A] bisognerebbe invertire le due condizioni
+                correlation_cond = line[
+                    2]  # Se la signature fosse di tipo Template[B,A] bisognerebbe invertire le due condizioni
                 mp_constraint.append((activities[1], correlation_cond))
             constraints.append(tuple(mp_constraint))
 
@@ -123,7 +124,8 @@ def tree_conditions_to_asp(condition, expression, condition_name, i, file, condi
         if expression.isliteral:
             condition_name = str(expression)
         else:
-            condition_name = condition + '_condition_' + ''.join([str(symbol).split('_')[2] for symbol in expression.get_symbols()])
+            condition_name = condition + '_condition_' + ''.join(
+                [str(symbol).split('_')[2] for symbol in expression.get_symbols()])
             while condition_name in conditions:
                 condition_name = condition_name + '_'
             conditions.add(condition_name)
@@ -192,7 +194,7 @@ def condition_to_asp(name, cond, i, file):
 
 ##### Create instance.lp
 
-f = open('generation_instance2.lp', 'w')
+f = open('generation_instance.lp', 'w')
 
 for activity in acts:
     f.write('activity({}).\n'.format(activity))
@@ -221,7 +223,6 @@ for i, constraint in enumerate(constraints):
     # Activation Condition
     activation_condition = constraint[1][1]
     expression, name_to_cond, cond_to_name = parsed_condition('activation', activation_condition)
-
     if expression.isliteral:
         f.write('activation_condition({},T):- {}({},T).\n'.format(i, str(expression), i))
     else:

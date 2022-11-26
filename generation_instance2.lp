@@ -1,34 +1,73 @@
-activity(a).
-has_attribute(a,mark).
-has_attribute(a,name).
+activity(er triage).
+has_attribute(er triage,org:group).
+has_attribute(er triage,diagnose).
+has_attribute(er triage,age).
 
-activity(b).
-has_attribute(b,grade).
-has_attribute(b,mark).
-has_attribute(b,name).
+activity(er registration).
+has_attribute(er registration,infectionsuspected).
+has_attribute(er registration,org:group).
+has_attribute(er registration,diagnosticblood).
+has_attribute(er registration,disfuncorg).
+has_attribute(er registration,sirscrittachypnea).
+has_attribute(er registration,hypotensie).
+has_attribute(er registration,sirscritheartrate).
+has_attribute(er registration,infusion).
+has_attribute(er registration,diagnosticartastrup).
+has_attribute(er registration,age).
+has_attribute(er registration,diagnosticic).
+has_attribute(er registration,diagnosticsputum).
+has_attribute(er registration,diagnosticliquor).
+has_attribute(er registration,diagnosticother).
+has_attribute(er registration,sirscriteria2ormore).
+has_attribute(er registration,diagnosticxthorax).
+has_attribute(er registration,sirscrittemperature).
+has_attribute(er registration,diagnosticurinaryculture).
+has_attribute(er registration,sirscritleucos).
+has_attribute(er registration,oligurie).
+has_attribute(er registration,diagnosticlacticacid).
+has_attribute(er registration,diagnose).
+has_attribute(er registration,hypoxie).
+has_attribute(er registration,diagnosticurinarysediment).
+has_attribute(er registration,diagnosticecg).
 
-value(grade,1..5).
+activity(er sepsis triage).
+has_attribute(er sepsis triage,org:group).
+has_attribute(er sepsis triage,diagnose).
+has_attribute(er sepsis triage,age).
 
-value(name,x).
-value(name,y).
-value(name,z).
-value(name,v).
+activity(leucocytes).
+has_attribute(leucocytes,leucocytes).
+has_attribute(leucocytes,org:group).
+has_attribute(leucocytes,diagnose).
+has_attribute(leucocytes,age).
 
-value(mark,1..5).
+activity(crp).
+has_attribute(crp,crp).
+has_attribute(crp,org:group).
+has_attribute(crp,diagnose).
+has_attribute(crp,age).
 
-template(0,"Response").
-activation(0,A).
-activation_condition(0,T) :- activation_condition_12(0,T).
-activation_condition_12(0,T) :- .
-activation_condition(0,T) :- activation_condition_34(0,T).
-activation_condition_34(0,T) :- .
-activation_condition_1(0,T) :- assigned_value(grade,V,T),V>2.
-activation_condition_2(0,T) :- assigned_value(name,x,T).
-activation_condition_2(0,T) :- assigned_value(name,y,T).
-activation_condition_3(0,T) :- assigned_value(grade,V,T),V<3.
-activation_condition_4(0,T) :- assigned_value(name,z,T).
-activation_condition_4(0,T) :- assigned_value(name,v,T).
-target(0,B).
-correlation_condition(0,T):- correlation_condition_1(0,T).
-correlation_condition_1(0,T) :- assigned_value(grade,V,T),V>5.
+activity(lacticacid).
+has_attribute(lacticacid,org:group).
+has_attribute(lacticacid,lacticacid).
+
+activity(iv antibiotics).
+has_attribute(iv antibiotics,org:group).
+
+activity(admission nc).
+has_attribute(admission nc,org:group).
+
+activity(iv liquid).
+has_attribute(iv liquid,org:group).
+has_attribute(iv liquid,diagnose).
+has_attribute(iv liquid,age).
+
+activity(release a).
+has_attribute(release a,org:group).
+
+activity(return er).
+has_attribute(return er,org:group).
+
+activity(admission ic).
+has_attribute(admission ic,org:group).
 

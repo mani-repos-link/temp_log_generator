@@ -6,22 +6,22 @@
 		<event>
 			<string key="concept:name" value="b" />
 			<string key="grade" value="5" />
-			<float key="time:timestamp" value="1668449051.06661" />
+			<float key="time:timestamp" value="1668953073.637564" />
 		</event>
 		<event>
 			<string key="concept:name" value="b" />
 			<string key="grade" value="5" />
-			<float key="time:timestamp" value="1668449051.066616" />
+			<float key="time:timestamp" value="1668953073.637582" />
 		</event>
 		<event>
 			<string key="concept:name" value="b" />
 			<string key="grade" value="5" />
-			<float key="time:timestamp" value="1668449051.066618" />
+			<float key="time:timestamp" value="1668953073.637586" />
 		</event>
 		<event>
 			<string key="concept:name" value="b" />
 			<string key="grade" value="5" />
-			<float key="time:timestamp" value="1668449051.066621" />
+			<float key="time:timestamp" value="1668953073.637589" />
 		</event>
 	</trace>
 	<trace>
@@ -29,22 +29,22 @@
 		<event>
 			<string key="concept:name" value="b" />
 			<string key="grade" value="5" />
-			<float key="time:timestamp" value="1668449051.066625" />
+			<float key="time:timestamp" value="1668953073.637594" />
 		</event>
 		<event>
 			<string key="concept:name" value="b" />
 			<string key="grade" value="5" />
-			<float key="time:timestamp" value="1668449051.066628" />
+			<float key="time:timestamp" value="1668953073.637596" />
 		</event>
 		<event>
 			<string key="concept:name" value="b" />
 			<string key="grade" value="5" />
-			<float key="time:timestamp" value="1668449051.06663" />
+			<float key="time:timestamp" value="1668953073.637598" />
 		</event>
 		<event>
 			<string key="concept:name" value="b" />
 			<string key="grade" value="5" />
-			<float key="time:timestamp" value="1668449051.066632" />
+			<float key="time:timestamp" value="1668953073.6376" />
 		</event>
 	</trace>
 	<trace>
@@ -52,22 +52,22 @@
 		<event>
 			<string key="concept:name" value="b" />
 			<string key="grade" value="5" />
-			<float key="time:timestamp" value="1668449051.066635" />
+			<float key="time:timestamp" value="1668953073.637604" />
 		</event>
 		<event>
 			<string key="concept:name" value="b" />
 			<string key="grade" value="5" />
-			<float key="time:timestamp" value="1668449051.066638" />
+			<float key="time:timestamp" value="1668953073.637606" />
 		</event>
 		<event>
 			<string key="concept:name" value="b" />
 			<string key="grade" value="5" />
-			<float key="time:timestamp" value="1668449051.06664" />
+			<float key="time:timestamp" value="1668953073.637608" />
 		</event>
 		<event>
 			<string key="concept:name" value="b" />
 			<string key="grade" value="5" />
-			<float key="time:timestamp" value="1668449051.066642" />
+			<float key="time:timestamp" value="1668953073.63761" />
 		</event>
 	</trace>
 	<trace>
@@ -75,23 +75,22 @@
 		<event>
 			<string key="concept:name" value="b" />
 			<string key="grade" value="5" />
-			<float key="time:timestamp" value="1668449051.066645" />
-		</event>exporting log, completed traces :: 100%|██████████| 4/4 [00:00<00:00, 20712.61it/s]
-exporting log, completed traces :: 100%|██████████| 4/4 [00:00<00:00, 12662.05it/s]
-		<event>
-			<string key="concept:name" value="b" />
-			<string key="grade" value="5" />
-			<float key="time:timestamp" value="1668449051.066648" />
+			<float key="time:timestamp" value="1668953073.637614" />
 		</event>
 		<event>
 			<string key="concept:name" value="b" />
 			<string key="grade" value="5" />
-			<float key="time:timestamp" value="1668449051.06665" />
+			<float key="time:timestamp" value="1668953073.637616" />
 		</event>
 		<event>
 			<string key="concept:name" value="b" />
 			<string key="grade" value="5" />
-			<float key="time:timestamp" value="1668449051.066652" />
+			<float key="time:timestamp" value="1668953073.637618" />
+		</event>
+		<event>
+			<string key="concept:name" value="b" />
+			<string key="grade" value="5" />
+			<float key="time:timestamp" value="1668953073.63762" />
 		</event>
 	</trace>
 </log>

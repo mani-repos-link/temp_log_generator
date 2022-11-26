@@ -28,126 +28,91 @@ public class Decl2LP {
 	Below, the map floatingAttributes contains entries formed by the name of the attribute and the number
 	of significat digit to scale.
 	*/
-	private static Map<String, Integer> floatingAttributes;
+	private Pattern constraintPattern = Pattern.compile("(.*)\\[(.*)\\]\\s*(.*)");
+	private int constraintIndex = 0;
 
-	public static String decl2lp(String declModel) {
+	public Decl2LP() {}
+
+	public String decl2lp(String declModel) throws Exception {
 
 		StringBuilder lpBuilder = new StringBuilder();
-		floatingAttributes = new HashMap<>();
-		Pattern constraintPattern = Pattern.compile("(.*)\\[(.*)\\]\\s*(.*)");
-		int constraintIndex = 0;
+		constraintIndex = 0;
 
-		try {
-			String[] lines = declModel.split("\\r?\\n");
+		String[] lines = declModel.split("\\r?\\n");
+		for (String line : lines) {
+			if (DeclareParser.isDataConstraint(line)) {
+				this.parseDataConstraint(line, lpBuilder);
+				constraintIndex++;
+			}
+		}
+		return lpBuilder.toString();
+	}
 
-			for (String line : lines) {
-				if (DeclareParser.isActivity(line)) {
-					String act = line.substring("activity ".length());
-					lpBuilder.append("activity(").append(act).append(").\n");
+	public String parseDataConstraint(String line, StringBuilder lpBuilder) throws Exception {
+		String lineWithoutTimeConds = line.substring(0, line.lastIndexOf('|')).trim();
+		Matcher mConstraint = constraintPattern.matcher(lineWithoutTimeConds);
 
-				} else if (DeclareParser.isDataBinding(line)) {
-					String act = line.substring("bind ".length(), line.indexOf(':'));
-					String[] boundAttributes = line.substring(line.indexOf(':') + 1).trim().split(",\\s+");
+		if (mConstraint.find()) {
+			String templateName = mConstraint.group(1);
+			lpBuilder.append("template(" + constraintIndex + ",\"" + templateName + "\").\n");
+			boolean isBinary = ConstraintTemplate.getByTemplateName(templateName).getIsBinary();
 
-					for (String att : boundAttributes)
-						lpBuilder.append("has_attribute(" + act + "," + att + ").\n");
+			String dataConditionsStr = mConstraint.group(3).replaceAll("(A\\.)|(T\\.)", "");
+			Predicate[] dataConditions = new Predicate[isBinary ? 2 : 1];
 
-				} else if (DeclareParser.isData(line)) {
-					String att = line.substring(0, line.indexOf(':'));
-					String valuesStr = line.substring(line.indexOf(':') + 1).trim();
+			String firstCond;
+			if (!isBinary)
+				firstCond = dataConditionsStr.trim().substring(1).trim();
+			else
+				firstCond = dataConditionsStr.trim().substring(1, dataConditionsStr.lastIndexOf('|')).trim();
 
-					if (valuesStr.startsWith("integer between") || valuesStr.startsWith("float between")) {
-						String[] tmp = valuesStr.split("\\s+");
-						String lowerBound, upperBound;
-						if (tmp[0].equals("integer")) {
-							lowerBound = tmp[2];
-							upperBound = tmp[4];
-						} else { // Scaling floating attribute bounds to the lowest integers
-							int digitsToScale = floatingAttributes.get(att);
-							lowerBound = String.valueOf(Math.round(Double.valueOf(tmp[2]) * Math.pow(10, digitsToScale)));
-							upperBound = String.valueOf(Math.round(Double.valueOf(tmp[4]) * Math.pow(10, digitsToScale)));
-						}
+			if (firstCond.isBlank())
+				dataConditions[0] = new LogicalPredicate(null, LogicalOperator.AND);
+			else
+				dataConditions[0] = Predicate.getPredicateFromString(firstCond);
 
-						lpBuilder.append("value(" + att + "," + lowerBound + ".." + upperBound + ").\n");
+			String[] activities = mConstraint.group(2).split(",\\s+");
+			String activation = activities[0];
+			Predicate actCond = dataConditions[0];
 
-					} else {
-						String[] catValues = valuesStr.split(",\\s+");
-						for (String val : catValues)
-							lpBuilder.append("value(" + att + "," + val + ").\n");
-					}
+			if (isBinary) {
+				String secondCond = dataConditionsStr.trim().substring(dataConditionsStr.lastIndexOf('|') + 1).trim();
 
-				} else if (DeclareParser.isDataConstraint(line)) {
-					String lineWithoutTimeConds = line.substring(0, line.lastIndexOf('|')).trim();
-					Matcher mConstraint = constraintPattern.matcher(lineWithoutTimeConds);
+				if (secondCond.isBlank())
+					dataConditions[1] = new LogicalPredicate(null, LogicalOperator.AND);
+				else
+					dataConditions[1] = Predicate.getPredicateFromString(secondCond);
 
-					if (mConstraint.find()) {
-						String templateName = mConstraint.group(1);
-						lpBuilder.append("template(" + constraintIndex + ",\"" + templateName + "\").\n");
-						boolean isBinary = ConstraintTemplate.getByTemplateName(templateName).getIsBinary();
-
-						String dataConditionsStr = mConstraint.group(3).replaceAll("(A\\.)|(T\\.)", "");
-						Predicate[] dataConditions = new Predicate[isBinary ? 2 : 1];
-
-						String firstCond;
-						if (!isBinary)
-							firstCond = dataConditionsStr.trim().substring(1).trim();
-						else
-							firstCond = dataConditionsStr.trim().substring(1, dataConditionsStr.lastIndexOf('|')).trim();
-
-						if (firstCond.isBlank())
-							dataConditions[0] = new LogicalPredicate(null, LogicalOperator.AND);
-						else
-							dataConditions[0] = Predicate.getPredicateFromString(firstCond);
-
-						String[] activities = mConstraint.group(2).split(",\\s+");
-						String activation = activities[0];
-						Predicate actCond = dataConditions[0];
-
-						if (isBinary) {
-							String secondCond = dataConditionsStr.trim().substring(dataConditionsStr.lastIndexOf('|') + 1).trim();
-
-							if (secondCond.isBlank())
-								dataConditions[1] = new LogicalPredicate(null, LogicalOperator.AND);
-							else
-								dataConditions[1] = Predicate.getPredicateFromString(secondCond);
-
-							String target;
-							Predicate trgCond;
-							if (ConstraintTemplate.getByTemplateName(templateName).getReverseActivationTarget()) {
-								activation = activities[1];
-								actCond = dataConditions[1];
-								target = activities[0];
-								trgCond = dataConditions[0];
-							} else {
-								target = activities[1];
-								trgCond = dataConditions[1];
-							}
-
-							lpBuilder.append("target(" + constraintIndex + "," + target + ").\n");
-
-							for (String e : getLPConditionsFromRootPredicate(trgCond, constraintIndex, "target"))
-								lpBuilder.append(e + "\n");
-						}
-
-						lpBuilder.append("activation(" + constraintIndex + "," + activation + ").\n");
-
-						for (String e : getLPConditionsFromRootPredicate(actCond, constraintIndex, "activation"))
-							lpBuilder.append(e + "\n");
-
-						constraintIndex++;
-					}
+				String target;
+				Predicate trgCond;
+				if (ConstraintTemplate.getByTemplateName(templateName).getReverseActivationTarget()) {
+					activation = activities[1];
+					actCond = dataConditions[1];
+					target = activities[0];
+					trgCond = dataConditions[0];
+				} else {
+					target = activities[1];
+					trgCond = dataConditions[1];
 				}
+
+				lpBuilder.append("target(" + constraintIndex + "," + target + ").\n");
+
+				for (String e : getLPConditionsFromRootPredicate(trgCond, constraintIndex, "target"))
+					lpBuilder.append(e + "\n");
 			}
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+			lpBuilder.append("activation(" + constraintIndex + "," + activation + ").\n");
 
+			for (String e : getLPConditionsFromRootPredicate(actCond, constraintIndex, "activation"))
+				lpBuilder.append(e + "\n");
+
+			constraintIndex++;
+		}
 		return lpBuilder.toString();
 	}
 
 
-	private static List<String> getLPConditionsFromRootPredicate(Predicate root, int constraintIndex, String mode) throws OperationNotSupportedException {
+	private List<String> getLPConditionsFromRootPredicate(Predicate root, int constraintIndex, String mode) throws OperationNotSupportedException {
 		List<String> conditions = new ArrayList<>();
 		List<String> childLeftParts = new ArrayList<>();
 
@@ -194,7 +159,7 @@ public class Decl2LP {
 	}
 
 
-	private static void getLPConditionFromNestedPredicate(List<String> conditions, LogicalPredicate nested, int constraintIndex, String mode) throws OperationNotSupportedException {
+	private void getLPConditionFromNestedPredicate(List<String> conditions, LogicalPredicate nested, int constraintIndex, String mode) throws OperationNotSupportedException {
 
 		List<String> childLeftParts = new ArrayList<>();
 		for (Predicate child : nested.getChildren()) {
@@ -224,12 +189,11 @@ public class Decl2LP {
 		}
 	}
 
-	private static void getLPConditionFromSimplePredicate(List<String> conditions, AttributePredicate attrPred, int constraintIndex, String mode) throws OperationNotSupportedException {
+	private void getLPConditionFromSimplePredicate(List<String> conditions, AttributePredicate attrPred, int constraintIndex, String mode)
+					throws OperationNotSupportedException {
 		String prefix = mode.equals("activation") ? "act" : "corr";
 		String leftPart = prefix + "_p" + conditions.size() + "(" + constraintIndex + ",T)";
-
 		List<String> rightParts = new ArrayList<>();
-
 		AttributeOperator op = (AttributeOperator) attrPred.getOperator();
 		switch (op) {
 			case EQ:
@@ -238,18 +202,9 @@ public class Decl2LP {
 			case GT:
 			case LEQ:
 			case LT:
-				boolean isFloatAtt = floatingAttributes.keySet().contains(attrPred.getAttribute());
+				boolean isFloatAtt = false;
 				String value;
-				if (isFloatAtt) { // Need to scale floatings because ASP works only with integers
-					int scaleNum = floatingAttributes.get(attrPred.getAttribute());
-					double doubleValue = Double.valueOf(attrPred.getValue()) * Math.pow(10, scaleNum);
-
-					value = String.valueOf(Math.round(doubleValue));
-
-				} else {
-					value = attrPred.getValue();
-				}
-
+				value = attrPred.getValue();
 				rightParts.add("assigned_value(" + attrPred.getAttribute() + ",V,T),V" + attrPred.getOperator().getStringDisplay() + value + ".");
 				break;
 

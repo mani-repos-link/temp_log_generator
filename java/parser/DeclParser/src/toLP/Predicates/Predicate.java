@@ -91,7 +91,6 @@ public abstract class Predicate {
 
 
 		Predicate predicate;
-
 		// BASE CASE: Empty sub-predicates list means empty predicate or the presence of only one AttributePredicate
 		if (innerPredStrings.isEmpty() && !predicateStr.isBlank()) {
 			String operatorsRegex = "(?i)\\s+(is\\s+not|is|not\\s+in|in|or|and|not|same|different|exist|<=|>=|<|>|=|!=)\\s+";
